@@ -1,0 +1,399 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 51;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		3B46EEFC250A735F0077B2FB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B46EEFB250A735F0077B2FB /* AppDelegate.swift */; };
+		3B46EF00250A735F0077B2FB /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B46EEFF250A735F0077B2FB /* ViewController.swift */; };
+		3B46EF05250A73620077B2FB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3B46EF04250A73620077B2FB /* Assets.xcassets */; };
+		3B46EF08250A73620077B2FB /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3B46EF06250A73620077B2FB /* LaunchScreen.storyboard */; };
+		8FDD75871EC0EDE186D782E5 /* Pods_AVDorisTestPlayer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B6BED6269A4777C88730A558 /* Pods_AVDorisTestPlayer.framework */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		1BA496C821A5C6A8A6B7E9B9 /* Pods-AVDorisTestPlayer.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AVDorisTestPlayer.release.xcconfig"; path = "Target Support Files/Pods-AVDorisTestPlayer/Pods-AVDorisTestPlayer.release.xcconfig"; sourceTree = "<group>"; };
+		3B46EEF8250A735E0077B2FB /* AVDorisTestPlayer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AVDorisTestPlayer.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		3B46EEFB250A735F0077B2FB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		3B46EEFF250A735F0077B2FB /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		3B46EF04250A73620077B2FB /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		3B46EF07250A73620077B2FB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		3B46EF09250A73620077B2FB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		B6BED6269A4777C88730A558 /* Pods_AVDorisTestPlayer.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_AVDorisTestPlayer.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		BDF45DCFF43F32FA1093D5FB /* Pods-AVDorisTestPlayer.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AVDorisTestPlayer.debug.xcconfig"; path = "Target Support Files/Pods-AVDorisTestPlayer/Pods-AVDorisTestPlayer.debug.xcconfig"; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		3B46EEF5250A735E0077B2FB /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8FDD75871EC0EDE186D782E5 /* Pods_AVDorisTestPlayer.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		119883F1A0090B961DB60BF9 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				B6BED6269A4777C88730A558 /* Pods_AVDorisTestPlayer.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		3B46EEEF250A735E0077B2FB = {
+			isa = PBXGroup;
+			children = (
+				3B46EEFA250A735E0077B2FB /* AVDorisTestPlayer */,
+				3B46EEF9250A735E0077B2FB /* Products */,
+				BB4E7EC729E2B6921D63C926 /* Pods */,
+				119883F1A0090B961DB60BF9 /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		3B46EEF9250A735E0077B2FB /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				3B46EEF8250A735E0077B2FB /* AVDorisTestPlayer.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		3B46EEFA250A735E0077B2FB /* AVDorisTestPlayer */ = {
+			isa = PBXGroup;
+			children = (
+				3B46EEFB250A735F0077B2FB /* AppDelegate.swift */,
+				3B46EEFF250A735F0077B2FB /* ViewController.swift */,
+				3B46EF04250A73620077B2FB /* Assets.xcassets */,
+				3B46EF06250A73620077B2FB /* LaunchScreen.storyboard */,
+				3B46EF09250A73620077B2FB /* Info.plist */,
+			);
+			path = AVDorisTestPlayer;
+			sourceTree = "<group>";
+		};
+		BB4E7EC729E2B6921D63C926 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				BDF45DCFF43F32FA1093D5FB /* Pods-AVDorisTestPlayer.debug.xcconfig */,
+				1BA496C821A5C6A8A6B7E9B9 /* Pods-AVDorisTestPlayer.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		3B46EEF7250A735E0077B2FB /* AVDorisTestPlayer */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 3B46EF0C250A73620077B2FB /* Build configuration list for PBXNativeTarget "AVDorisTestPlayer" */;
+			buildPhases = (
+				C6B04B09C213DC1BFF9E0A1C /* [CP] Check Pods Manifest.lock */,
+				3B46EEF4250A735E0077B2FB /* Sources */,
+				3B46EEF5250A735E0077B2FB /* Frameworks */,
+				3B46EEF6250A735E0077B2FB /* Resources */,
+				123847D745D281E8BA7A11E6 /* [CP] Embed Pods Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = AVDorisTestPlayer;
+			productName = AVDorisTestPlayer;
+			productReference = 3B46EEF8250A735E0077B2FB /* AVDorisTestPlayer.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		3B46EEF0250A735E0077B2FB /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 1170;
+				LastUpgradeCheck = 1170;
+				ORGANIZATIONNAME = "Endeavor Streaming";
+				TargetAttributes = {
+					3B46EEF7250A735E0077B2FB = {
+						CreatedOnToolsVersion = 11.7;
+					};
+				};
+			};
+			buildConfigurationList = 3B46EEF3250A735E0077B2FB /* Build configuration list for PBXProject "AVDorisTestPlayer" */;
+			compatibilityVersion = "Xcode 9.3";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 3B46EEEF250A735E0077B2FB;
+			productRefGroup = 3B46EEF9250A735E0077B2FB /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				3B46EEF7250A735E0077B2FB /* AVDorisTestPlayer */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		3B46EEF6250A735E0077B2FB /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3B46EF08250A73620077B2FB /* LaunchScreen.storyboard in Resources */,
+				3B46EF05250A73620077B2FB /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		123847D745D281E8BA7A11E6 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-AVDorisTestPlayer/Pods-AVDorisTestPlayer-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-AVDorisTestPlayer/Pods-AVDorisTestPlayer-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-AVDorisTestPlayer/Pods-AVDorisTestPlayer-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		C6B04B09C213DC1BFF9E0A1C /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-AVDorisTestPlayer-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		3B46EEF4250A735E0077B2FB /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3B46EF00250A735F0077B2FB /* ViewController.swift in Sources */,
+				3B46EEFC250A735F0077B2FB /* AppDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		3B46EF06250A73620077B2FB /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				3B46EF07250A73620077B2FB /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		3B46EF0A250A73620077B2FB /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.7;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		3B46EF0B250A73620077B2FB /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.7;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		3B46EF0D250A73620077B2FB /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = BDF45DCFF43F32FA1093D5FB /* Pods-AVDorisTestPlayer.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = S2TGULJLWU;
+				INFOPLIST_FILE = AVDorisTestPlayer/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.6;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.doris.avdoristest;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		3B46EF0E250A73620077B2FB /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 1BA496C821A5C6A8A6B7E9B9 /* Pods-AVDorisTestPlayer.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = S2TGULJLWU;
+				INFOPLIST_FILE = AVDorisTestPlayer/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.6;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.doris.avdoristest;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		3B46EEF3250A735E0077B2FB /* Build configuration list for PBXProject "AVDorisTestPlayer" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				3B46EF0A250A73620077B2FB /* Debug */,
+				3B46EF0B250A73620077B2FB /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		3B46EF0C250A73620077B2FB /* Build configuration list for PBXNativeTarget "AVDorisTestPlayer" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				3B46EF0D250A73620077B2FB /* Debug */,
+				3B46EF0E250A73620077B2FB /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 3B46EEF0250A735E0077B2FB /* Project object */;
+}
