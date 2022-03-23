@@ -14,11 +14,107 @@ class ViewController: UIViewController {
     var doris: DorisPlayer?
     var playerController = AVPlayerViewController()
     
+    lazy var buttonVod: UIButton = {
+        let button = UIButton()
+        button.setTitle("Play VOD", for: .normal)
+        let action = UIAction { _ in
+            self.present(self.playerController, animated: true) { [weak self] in
+                guard let self = self else { return }
+                self.loadSimpleVODSource()
+            }
+        }
+        button.addAction(action, for: .touchUpInside)
+        return button
+    }()
+    
+    lazy var buttonLive: UIButton = {
+        let button = UIButton()
+        button.setTitle("Play LIVE", for: .normal)
+        let action = UIAction { _ in
+            self.present(self.playerController, animated: true) { [weak self] in
+                guard let self = self else { return }
+                self.loadSimpleLiveSource()
+            }
+        }
+        button.addAction(action, for: .touchUpInside)
+        return button
+    }()
+    
+    lazy var buttonVodDAI: UIButton = {
+        let button = UIButton()
+        button.setTitle("Play VOD with server-side ads", for: .normal)
+        let action = UIAction { _ in
+            self.present(self.playerController, animated: true) { [weak self] in
+                guard let self = self else { return }
+                self.loadDAIVodSource()
+            }
+        }
+        button.addAction(action, for: .touchUpInside)
+        return button
+    }()
+    
+    lazy var buttonLiveDAI: UIButton = {
+        let button = UIButton()
+        button.setTitle("Play LIVE with server-side ads", for: .normal)
+        let action = UIAction { _ in
+            self.present(self.playerController, animated: true) { [weak self] in
+                guard let self = self else { return }
+                self.loadDAILiveSource()
+            }
+        }
+        button.addAction(action, for: .touchUpInside)
+        return button
+    }()
+    
+    lazy var buttonVodCSAI: UIButton = {
+        let button = UIButton()
+        button.setTitle("Play VOD with client-side ads", for: .normal)
+        let action = UIAction { _ in
+            self.present(self.playerController, animated: true) { [weak self] in
+                guard let self = self else { return }
+                self.loadCSAIVodStream()
+            }
+        }
+        button.addAction(action, for: .touchUpInside)
+        return button
+    }()
+    
+    lazy var buttonLiveCSAI: UIButton = {
+        let button = UIButton()
+        button.setTitle("Play LIVE with client-side ads", for: .normal)
+        let action = UIAction { _ in
+            self.present(self.playerController, animated: true) { [weak self] in
+                guard let self = self else { return }
+                self.loadCSALiveStream()
+            }
+        }
+        button.addAction(action, for: .touchUpInside)
+        return button
+    }()
+    
+    lazy var stackView: UIStackView = {
+        let stackView = UIStackView()
+        stackView.axis = .vertical
+        stackView.spacing = 16
+        stackView.translatesAutoresizingMaskIntoConstraints = false
+        stackView.addArrangedSubview(buttonVod)
+        stackView.addArrangedSubview(buttonLive)
+        stackView.addArrangedSubview(buttonVodDAI)
+        stackView.addArrangedSubview(buttonLiveDAI)
+        stackView.addArrangedSubview(buttonVodCSAI)
+        stackView.addArrangedSubview(buttonLiveCSAI)
+        return stackView
+    }()
+    
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
         if doris == nil {
             setupAVDorisWithNativeUI()
+            
+            view.addSubview(stackView)
+            stackView.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
+            stackView.centerYAnchor.constraint(equalTo: view.centerYAnchor).isActive = true
         }
     }
     
@@ -38,16 +134,6 @@ class ViewController: UIViewController {
         
         let config = DorisPluginsConfig(pip: pictureInPictureConfig, mux: muxConfig, ads: adsConfig)
         self.doris = AVDorisFactory.create(player: player, pluginsConfig: config, output: self)
-                
-        self.present(playerController, animated: true) { [weak self] in
-            guard let self = self else { return }
-            self.loadSimpleVODSource()
-//            self.loadSimpleLiveSource()
-//            self.loadDAIVodSource()
-//            self.loadDAILiveSource()
-//            self.loadCSAIVodStream()
-//            self.loadCSALiveStream()
-        }
     }
     
     func loadSimpleVODSource() {
