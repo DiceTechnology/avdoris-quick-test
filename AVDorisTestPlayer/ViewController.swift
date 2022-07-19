@@ -21,6 +21,16 @@ class ViewController: UIViewController {
             self.present(self.playerController, animated: true) { [weak self] in
                 guard let self = self else { return }
                 self.loadSimpleVODSource()
+                print("zzz loaded VOD 1")
+                DispatchQueue.main.asyncAfter(deadline: .now() + 30) {
+                    print("zzz loaded VOD 2")
+                    self.loadSimpleVODSource(startAt: 100)
+                }
+                
+                DispatchQueue.main.asyncAfter(deadline: .now() + 60) {
+                    print("zzz loaded VOD 3")
+                    self.loadSimpleVODSource(startAt: 300)
+                }
             }
         }
         button.addAction(action, for: .touchUpInside)
@@ -33,7 +43,17 @@ class ViewController: UIViewController {
         let action = UIAction { _ in
             self.present(self.playerController, animated: true) { [weak self] in
                 guard let self = self else { return }
-                self.loadSimpleLiveSource()
+                self.loadSimpleLiveSource(startAt: 20)
+                print("zzz loaded live 1")
+                DispatchQueue.main.asyncAfter(deadline: .now() + 30) {
+                    print("zzz loaded live 2")
+                    self.loadSimpleLiveSource(startAt: 50)
+                }
+                
+                DispatchQueue.main.asyncAfter(deadline: .now() + 60) {
+                    print("zzz loaded live 3")
+                    self.loadSimpleLiveSource(startAt: 100)
+                }
             }
         }
         button.addAction(action, for: .touchUpInside)
@@ -134,16 +154,17 @@ class ViewController: UIViewController {
         
         let config = DorisPluginsConfig(pip: pictureInPictureConfig, mux: muxConfig, ads: adsConfig)
         self.doris = AVDorisFactory.create(player: player, pluginsConfig: config, output: self)
+        player.allowsExternalPlayback = true
     }
     
-    func loadSimpleVODSource() {
+    func loadSimpleVODSource(startAt: Double? = nil) {
         let source = PlayerItemSource(playerItem: AVPlayerItem(url: URL(string: "https://bitdash-a.akamaihd.net/content/sintel/hls/playlist.m3u8")!))
-        doris?.load(source: source)
+        doris?.load(source: source, startAt: startAt)
     }
     
-    func loadSimpleLiveSource() {
+    func loadSimpleLiveSource(startAt: Double? = nil) {
         let source = PlayerItemSource(playerItem: AVPlayerItem(url: URL(string: "https://cph-p2p-msl.akamaized.net/hls/live/2000341/test/master.m3u8")!))
-        doris?.load(source: source)
+        doris?.load(source: source, startAt: startAt)
     }
         
     func loadDAIVodSource() {
