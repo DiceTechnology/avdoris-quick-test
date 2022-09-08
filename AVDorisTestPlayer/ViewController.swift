@@ -17,9 +17,9 @@ class ViewController: UIViewController {
     lazy var buttonVod: UIButton = {
         let button = UIButton()
         button.setTitle("Play VOD", for: .normal)
-        let action = UIAction { _ in
-            self.present(self.playerController, animated: true) { [weak self] in
-                guard let self = self else { return }
+        let action = UIAction { [weak self] _ in
+            guard let self = self else { return }
+            self.present(self.playerController, animated: true) {
                 self.loadSimpleVODSource()
                 print("zzz loaded VOD 1")
                 DispatchQueue.main.asyncAfter(deadline: .now() + 30) {
@@ -40,20 +40,10 @@ class ViewController: UIViewController {
     lazy var buttonLive: UIButton = {
         let button = UIButton()
         button.setTitle("Play LIVE", for: .normal)
-        let action = UIAction { _ in
-            self.present(self.playerController, animated: true) { [weak self] in
-                guard let self = self else { return }
+        let action = UIAction { [weak self] _ in
+            guard let self = self else { return }
+            self.present(self.playerController, animated: true) {
                 self.loadSimpleLiveSource(startAt: 20)
-                print("zzz loaded live 1")
-                DispatchQueue.main.asyncAfter(deadline: .now() + 30) {
-                    print("zzz loaded live 2")
-                    self.loadSimpleLiveSource(startAt: 50)
-                }
-                
-                DispatchQueue.main.asyncAfter(deadline: .now() + 60) {
-                    print("zzz loaded live 3")
-                    self.loadSimpleLiveSource(startAt: 100)
-                }
             }
         }
         button.addAction(action, for: .touchUpInside)
@@ -63,9 +53,9 @@ class ViewController: UIViewController {
     lazy var buttonVodDAI: UIButton = {
         let button = UIButton()
         button.setTitle("Play VOD with server-side ads", for: .normal)
-        let action = UIAction { _ in
-            self.present(self.playerController, animated: true) { [weak self] in
-                guard let self = self else { return }
+        let action = UIAction { [weak self] _ in
+            guard let self = self else { return }
+            self.present(self.playerController, animated: true) {
                 self.loadDAIVodSource()
             }
         }
@@ -76,9 +66,9 @@ class ViewController: UIViewController {
     lazy var buttonLiveDAI: UIButton = {
         let button = UIButton()
         button.setTitle("Play LIVE with server-side ads", for: .normal)
-        let action = UIAction { _ in
-            self.present(self.playerController, animated: true) { [weak self] in
-                guard let self = self else { return }
+        let action = UIAction { [weak self] _ in
+            guard let self = self else { return }
+            self.present(self.playerController, animated: true) {
                 self.loadDAILiveSource()
             }
         }
@@ -89,9 +79,9 @@ class ViewController: UIViewController {
     lazy var buttonVodCSAI: UIButton = {
         let button = UIButton()
         button.setTitle("Play VOD with client-side ads", for: .normal)
-        let action = UIAction { _ in
-            self.present(self.playerController, animated: true) { [weak self] in
-                guard let self = self else { return }
+        let action = UIAction { [weak self] _ in
+            guard let self = self else { return }
+            self.present(self.playerController, animated: true) {
                 self.loadCSAIVodStream()
             }
         }
@@ -102,9 +92,9 @@ class ViewController: UIViewController {
     lazy var buttonLiveCSAI: UIButton = {
         let button = UIButton()
         button.setTitle("Play LIVE with client-side ads", for: .normal)
-        let action = UIAction { _ in
-            self.present(self.playerController, animated: true) { [weak self] in
-                guard let self = self else { return }
+        let action = UIAction { [weak self] _ in
+            guard let self = self else { return }
+            self.present(self.playerController, animated: true) {
                 self.loadCSALiveStream()
             }
         }
