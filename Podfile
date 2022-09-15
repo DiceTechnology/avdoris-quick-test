@@ -1,9 +1,7 @@
-platform :ios, '11.2'
-
+platform :ios, '12.0'
 
 target 'AVDorisTestPlayer' do
-  # Comment the next line if you don't want to use dynamic frameworks
   use_frameworks!
 
-  pod 'AVDoris', "= 0.10.3"
+  pod 'AVDoris', "= 1.0.0"
 end
