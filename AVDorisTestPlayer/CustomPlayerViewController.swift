@@ -19,10 +19,9 @@ enum PlaybackItemType {
 }
 
 class CustomPlayerViewController: AVPlayerViewController, AVPictureInPictureControllerDelegate {
-    lazy var adsOverlayView: DorisPlayerLayerViewProtocol = {
-        let adsOverlayView = DorisPlayerLayerView()
+    lazy var adsOverlayView: UIView = {
+        let adsOverlayView = UIView()
         adsOverlayView.isHidden = true // hide initially and manage isHidden based on AdvertisementEvent.AD_BREAK_ENDED, AdvertisementEvent.AD_BREAK_STARTED
-        adsOverlayView.player = AVPlayer() //pass a new, separate instance of AVPlayer that will be responsible for ads playback
         adsOverlayView.frame = UIScreen.main.bounds
         return adsOverlayView
     }()
@@ -132,13 +131,21 @@ class CustomPlayerViewController: AVPlayerViewController, AVPictureInPictureCont
     }
     
     private func loadSimpleVODSource(startAt: Double? = nil) {
-        let source = PlayerItemSource(playerItem: AVPlayerItem(url: URL(string: "https://bitdash-a.akamaihd.net/content/sintel/hls/playlist.m3u8")!))
-        doris?.load(source: source, startAt: startAt)
+        var initialSeek: DorisSeekType?
+        if let startAt = startAt {
+            initialSeek = .position(startAt, isAccurate: false)
+        }
+        let source = DorisSource(playerItem: AVPlayerItem(url: URL(string: "https://bitdash-a.akamaihd.net/content/sintel/hls/playlist.m3u8")!))
+        doris?.load(source: source, initialSeek: initialSeek, autoStart: false)        
     }
     
     private func loadSimpleLiveSource(startAt: Double? = nil) {
-        let source = PlayerItemSource(playerItem: AVPlayerItem(url: URL(string: "https://cph-p2p-msl.akamaized.net/hls/live/2000341/test/master.m3u8")!))
-        doris?.load(source: source, startAt: startAt)
+        var initialSeek: DorisSeekType?
+        if let startAt = startAt {
+            initialSeek = .position(startAt, isAccurate: false)
+        }
+        let source = DorisSource(playerItem: AVPlayerItem(url: URL(string: "https://cph-p2p-msl.akamaized.net/hls/live/2000341/test/master.m3u8")!))
+        doris?.load(source: source, initialSeek: initialSeek)
     }
         
     private func loadDAIVodSource() {
@@ -185,26 +192,13 @@ class CustomPlayerViewController: AVPlayerViewController, AVPictureInPictureCont
 
 
 extension CustomPlayerViewController: DorisPlayerOutputProtocol {
+    func onPlayerStateChanged(old: DorisPlayerState, new: DorisPlayerState) {
+        print(">>> DorisPlayerState:", String(describing: new))
+    }
+    
     func onPlayerEvent(_ event: DorisPlayerEvent) {
+        print(">>> DorisPlayerEvent:", String(describing: event))
         switch event {
-        case .stateChanged(let state):
-            print(">>> Current player state", state)
-        case .finishedPlaying(let endTime):
-            print(">>> Playback finished end time:", endTime)
-        case .currentTimeChanged(let time):
-            print(">>> Current playback time changed:", time)
-        case .itemDurationChanged(let duration):
-            print(">>> Current item duration changed:", duration)
-        case .seekableTimeRangesChanged(let start, let end):
-            print(">>> Seekable timeranges:", start)
-            print(">>> Seekable timeranges:", end)
-        case .availableMediaSelectionLoaded(let subtitles, let audioTracks):
-            print(">>> available subtitles", subtitles)
-            print(">>> available audioTracks", audioTracks)
-        case .willLoadAfterDelay(delay: let delay, position: let position):
-            print(">>> willLoadAfterDelay", delay, "at postion", position as Any)
-        case .willLoadNow:
-            print(">>> stream willLoad now")
         case .streamTypeRecognized(streamType: let streamType):
             switch streamType {
             case .LIVE:
@@ -218,86 +212,42 @@ extension CustomPlayerViewController: DorisPlayerOutputProtocol {
                 doris?.updateRemoteCommands(with: config)
             case .VOD:
                 doris?.updateRemoteCommands(with: .default)
-            case .unknown:
-                break
+            default: break
             }
-            print(">>> stream type", streamType)
-        case .loadedTimeRangesChanged(start: let start, end: let end):
-            print(">>> loadedTimeRangesChanged", start, end)
-        case .audioSessionRouteChanged(route: let route):
-            print(">>> audioSessionRouteChanged", route)
-        case .playbackLogsUpdated(logs: let logs):
-//            print(">>> playback logs", logs)
-            break
-        case .playbackErrorLogsUpdated(logs: let logs):
-            print(">>> error logs", logs)
-        }
-    }
-
-    func onAdvertisementEvent(_ event: AdvertisementEvent) {
-        switch event {
-        case .STREAM_STARTED(let streamStartedData):
-            print(">>> Stream with ads started", streamStartedData)
-        case .REQUIRE_AD_TAG_PARAMETERS(let requireAdTagParametersData):
-            print(">>> Need to update ad tag parameters for live stream", requireAdTagParametersData)
-//            doris?.replaceAdTagParameters(adTagParameters: [:], validFrom: nil, validUntil: nil)
-        case .AD_RANGES_CHANGED(let adRangesChangedData):
-            print(">>> Array of ads ranges for current stream, to place marks on a seek bar to show where the ad starts/ends", adRangesChangedData)
-        case .AD_PROGRESS_CHANGED(let adProgressChangedData):
-            print(">>> when an ad starts this event is triggered to provide more info about current ad brreak", adProgressChangedData)
-        case .AD_BREAK_ENDED:
-            adsOverlayView.isHidden = true
-            showsPlaybackControls = true
-            print(">>> ad break ended")
-        case .AD_BREAK_STARTED:
-            adsOverlayView.isHidden = false
-            showsPlaybackControls = false
-            print(">>> ad break started")
-        case .AD_STARTED(let adStartedData):
-            print(">>> single ad within some ad break started", adStartedData)
-        case .AD_ENDED(let adEndedData):
-            print(">>> single ad within some ad break ended", adEndedData)
-        case .AD_PAUSE:
-            print(">>> ad paused")
-        case .AD_RESUME:
-            print(">>> ad resumed")
-        case .willSeekWithSnapBack(snapBackPosition: let snapBackPosition, requestedPosition: let requestedPosition):
-            print(">>> willSeekWithSnapBack")
-        case .didSeekWithSnapBack(snapBackPosition: let snapBackPosition, requestedPosition: let requestedPosition):
-            print(">>> didSeekWithSnapBack")
+        default: break
         }
     }
     
-    func onRemoteCommandEvent(_ event: RemoteCommandEvent) {
+    func onAdvertisementEvent(_ event: DorisAdsEvent) {
+        print(">>> DorisAdsEvent:", String(describing: event))
+
+        switch event {
+        case .adBreakEnded:
+            adsOverlayView.isHidden = true
+            showsPlaybackControls = true
+        case .adBreakStarted:
+            adsOverlayView.isHidden = false
+            showsPlaybackControls = false
+        default: break
+        }
+    }
+    
+    func onRemoteCommandEvent(_ event: DorisRemoteCommandEvent) {
+        print(">>> DorisRemoteCommandEvent:", String(describing: event))
+
         switch event {
         case .play:
             doris?.play()
-            print(">>> Command center play")
         case .pause:
             doris?.pause()
-            print(">>> Command center pause")
-        case .playPause:
-            print(">>> Command center playPause")
-        case .stop:
-            doris?.stop()
-            print(">>> Command center stop")
-        case .skipBackward(let double):
-            doris?.seek(offset: -double)
-            print(">>> Command center skipBackward", double)
-        case .skipForward(let double):
-            doris?.seek(offset: double)
-            print(">>> Command center skipForward", double)
-        case .previousTrack:
-            print(">>> Command center previousTrack")
-        case .nextTrack:
-            print(">>> Command center nextTrack")
-        case .changePosition(let double):
-            doris?.seek(position: double)
-            print(">>> Command center changePosition to:", double)
+        case .skipBackward(let offset):
+            doris?.seek(.offset(-offset, isAccurate: false))
+        case .skipForward(let offset):
+            doris?.seek(.offset(offset, isAccurate: false))
+        case .changePosition(let position):
+            doris?.seek(.position(position, isAccurate: false))
+        default: break
         }
     }
-
-    func onError(_ error: Error) {
-        print(error)
     }
 }
