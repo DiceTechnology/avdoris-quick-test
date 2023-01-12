@@ -13,7 +13,6 @@
 		3B46EF08250A73620077B2FB /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3B46EF06250A73620077B2FB /* LaunchScreen.storyboard */; };
 		631F04D666E2CAC0FE0D2C7D /* Pods_AVDorisTestPlayer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C0F3897413A987DCF2086A58 /* Pods_AVDorisTestPlayer.framework */; };
 		DFB8439328CB8E87003BDC74 /* CustomPlayerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFB8439228CB8E87003BDC74 /* CustomPlayerViewController.swift */; };
-		DFEC8F1E2927A16000894F85 /* image.png in Resources */ = {isa = PBXBuildFile; fileRef = DFEC8F1D2927A16000894F85 /* image.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,7 +25,6 @@
 		B96C981C04A0D687BC52F187 /* Pods-AVDorisTestPlayer.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AVDorisTestPlayer.debug.xcconfig"; path = "Target Support Files/Pods-AVDorisTestPlayer/Pods-AVDorisTestPlayer.debug.xcconfig"; sourceTree = "<group>"; };
 		C0F3897413A987DCF2086A58 /* Pods_AVDorisTestPlayer.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_AVDorisTestPlayer.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		DFB8439228CB8E87003BDC74 /* CustomPlayerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomPlayerViewController.swift; sourceTree = "<group>"; };
-		DFEC8F1D2927A16000894F85 /* image.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = image.png; sourceTree = "<group>"; };
 		E4E9A3E7357265A945D1BE46 /* Pods-AVDorisTestPlayer.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AVDorisTestPlayer.release.xcconfig"; path = "Target Support Files/Pods-AVDorisTestPlayer/Pods-AVDorisTestPlayer.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -63,7 +61,6 @@
 		3B46EEFA250A735E0077B2FB /* AVDorisTestPlayer */ = {
 			isa = PBXGroup;
 			children = (
-				DFEC8F1D2927A16000894F85 /* image.png */,
 				3B46EEFB250A735F0077B2FB /* AppDelegate.swift */,
 				3B46EEFF250A735F0077B2FB /* ViewController.swift */,
 				DFB8439228CB8E87003BDC74 /* CustomPlayerViewController.swift */,
@@ -153,7 +150,6 @@
 			files = (
 				3B46EF08250A73620077B2FB /* LaunchScreen.storyboard in Resources */,
 				3B46EF05250A73620077B2FB /* Assets.xcassets in Resources */,
-				DFEC8F1E2927A16000894F85 /* image.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

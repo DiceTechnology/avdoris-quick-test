@@ -136,7 +136,7 @@ class CustomPlayerViewController: AVPlayerViewController, AVPictureInPictureCont
             initialSeek = .position(startAt, isAccurate: false)
         }
         let source = DorisSource(playerItem: AVPlayerItem(url: URL(string: "https://bitdash-a.akamaihd.net/content/sintel/hls/playlist.m3u8")!))
-        doris?.load(source: source, initialSeek: initialSeek, autoStart: false)        
+        doris?.load(source: source, initialSeek: initialSeek, autoStart: false)
     }
     
     private func loadSimpleLiveSource(startAt: Double? = nil) {
@@ -248,6 +248,5 @@ extension CustomPlayerViewController: DorisPlayerOutputProtocol {
             doris?.seek(.position(position, isAccurate: false))
         default: break
         }
-    }
     }
 }
