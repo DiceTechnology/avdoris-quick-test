@@ -46,7 +46,7 @@ class DorisCastManager: NSObject {
         let customData = createCustomData()
         let metadata = GCKMediaMetadata(metadataType: .movie)
         metadata.setString("Doris Test", forKey: kGCKMetadataKeyTitle)
-        
+
         let builder = GCKMediaInformationBuilder()
         builder.contentID = "\(videoID)"
         builder.streamType = GCKMediaStreamType.buffered
