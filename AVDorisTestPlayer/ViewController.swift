@@ -9,6 +9,7 @@
 import AVDoris
 import AVKit
 import UIKit
+import GoogleCast
 
 class ViewController: UIViewController {
     lazy var buttonVod: UIButton = {
@@ -76,6 +77,29 @@ class ViewController: UIViewController {
         return button
     }()
     
+    lazy var buttonCast: UIButton = {
+        let button = UIButton()
+        button.translatesAutoresizingMaskIntoConstraints = false
+        button.setTitle("Cast test video", for: .normal)
+        button.setTitle("Connect to CC to cast", for: .disabled)
+        button.setTitleColor(.gray, for: .disabled)
+        button.setTitleColor(.white, for: .normal)
+        button.isEnabled = false
+        let action = UIAction { [weak self] _ in
+            guard let self = self else { return }
+            self.testCast()
+        }
+        button.addAction(action, for: .touchUpInside)
+        return button
+    }()
+    
+    let chromecastConnectButton: GCKUICastButton = {
+        let button = GCKUICastButton()
+        button.translatesAutoresizingMaskIntoConstraints = false
+        button.tintColor = .white
+        return button
+    }()
+    
     lazy var stackView: UIStackView = {
         let stackView = UIStackView()
         stackView.axis = .vertical
@@ -90,11 +114,39 @@ class ViewController: UIViewController {
         return stackView
     }()
     
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-        
+    let castManager = DorisCastManager()
+
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        setupLayout()
+        castManager.delegate = self
+    }
+    
+    func setupLayout() {
+        view.addSubview(chromecastConnectButton)
+        view.addSubview(buttonCast)
         view.addSubview(stackView)
+        
+        chromecastConnectButton.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 8).isActive = true
+        chromecastConnectButton.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -20).isActive = true
+        chromecastConnectButton.widthAnchor.constraint(equalToConstant: 24).isActive = true
+        chromecastConnectButton.heightAnchor.constraint(equalToConstant: 24).isActive = true
+        
+        buttonCast.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 8).isActive = true
+        buttonCast.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 20).isActive = true
+                
         stackView.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
         stackView.centerYAnchor.constraint(equalTo: view.centerYAnchor).isActive = true
     }
+        
+    private func testCast() {
+        castManager.cast()
+    }
 }
+
+extension ViewController: DorisCastManagerDelegate {
+    func castStateDidChange(isConnected: Bool) {
+        buttonCast.isEnabled = isConnected
+    }
+}
+
