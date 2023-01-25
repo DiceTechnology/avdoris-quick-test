@@ -43,12 +43,11 @@ class DorisCastManager: NSObject {
     }
     
     func cast() {
-        let streamURL = URL(string: "https://bitdash-a.akamaihd.net/content/sintel/hls/playlist.m3u8")!
         let customData = createCustomData()
         let metadata = GCKMediaMetadata(metadataType: .movie)
         metadata.setString("Doris Test", forKey: kGCKMetadataKeyTitle)
-        
-        let builder = GCKMediaInformationBuilder(contentURL: streamURL)
+
+        let builder = GCKMediaInformationBuilder()
         builder.contentID = "\(videoID)"
         builder.streamType = GCKMediaStreamType.buffered
         builder.textTrackStyle = nil
