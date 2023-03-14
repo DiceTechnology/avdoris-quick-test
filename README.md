@@ -21,4 +21,14 @@ pod install --repo-update
 Docs available here:
 https://dicetechnology.github.io/avdoris
 
-To test Download to Go please fill in AVDorisTestPlayer/D2G/Constants.swift with real values
+## Download to Go
+To test Download to Go please fill all unset values in
+```
+AVDorisTestPlayer/D2G/Constants.swift
+```
+
+## Google Cast
+To test Google Cast please fill all unset values in 
+```
+AVDorisTestPlayer/Cast/DorisCastManager.swift
+```
