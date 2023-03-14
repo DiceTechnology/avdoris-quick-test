@@ -11,9 +11,10 @@ import AVKit
 import UIKit
 import GoogleCast
 
-class ViewController: UIViewController {
+class PlaybackViewController: UIViewController {
     lazy var buttonVod: UIButton = {
         let button = UIButton()
+        button.setTitleColor(.black, for: .normal)
         button.setTitle("Play VOD", for: .normal)
         let action = UIAction { [weak self] _ in
             guard let self = self else { return }
@@ -25,6 +26,7 @@ class ViewController: UIViewController {
     
     lazy var buttonLive: UIButton = {
         let button = UIButton()
+        button.setTitleColor(.black, for: .normal)
         button.setTitle("Play LIVE", for: .normal)
         let action = UIAction { [weak self] _ in
             guard let self = self else { return }
@@ -36,6 +38,7 @@ class ViewController: UIViewController {
     
     lazy var buttonVodDAI: UIButton = {
         let button = UIButton()
+        button.setTitleColor(.black, for: .normal)
         button.setTitle("Play VOD with server-side ads", for: .normal)
         let action = UIAction { [weak self] _ in
             guard let self = self else { return }
@@ -46,6 +49,7 @@ class ViewController: UIViewController {
     
     lazy var buttonLiveDAI: UIButton = {
         let button = UIButton()
+        button.setTitleColor(.black, for: .normal)
         button.setTitle("Play LIVE with server-side ads", for: .normal)
         let action = UIAction { [weak self] _ in
             guard let self = self else { return }
@@ -57,6 +61,7 @@ class ViewController: UIViewController {
     
     lazy var buttonVodCSAI: UIButton = {
         let button = UIButton()
+        button.setTitleColor(.black, for: .normal)
         button.setTitle("Play VOD with client-side ads", for: .normal)
         let action = UIAction { [weak self] _ in
             guard let self = self else { return }
@@ -68,6 +73,7 @@ class ViewController: UIViewController {
     
     lazy var buttonLiveCSAI: UIButton = {
         let button = UIButton()
+        button.setTitleColor(.black, for: .normal)
         button.setTitle("Play LIVE with client-side ads", for: .normal)
         let action = UIAction { [weak self] _ in
             guard let self = self else { return }
@@ -83,7 +89,7 @@ class ViewController: UIViewController {
         button.setTitle("Cast test video", for: .normal)
         button.setTitle("Connect to CC to cast", for: .disabled)
         button.setTitleColor(.gray, for: .disabled)
-        button.setTitleColor(.white, for: .normal)
+        button.setTitleColor(.black, for: .normal)
         button.isEnabled = false
         let action = UIAction { [weak self] _ in
             guard let self = self else { return }
@@ -96,7 +102,7 @@ class ViewController: UIViewController {
     let chromecastConnectButton: GCKUICastButton = {
         let button = GCKUICastButton()
         button.translatesAutoresizingMaskIntoConstraints = false
-        button.tintColor = .white
+        button.tintColor = .black
         return button
     }()
     
@@ -120,6 +126,7 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         setupLayout()
         castManager.delegate = self
+        view.backgroundColor = .white
     }
     
     func setupLayout() {
@@ -144,7 +151,7 @@ class ViewController: UIViewController {
     }
 }
 
-extension ViewController: DorisCastManagerDelegate {
+extension PlaybackViewController: DorisCastManagerDelegate {
     func castStateDidChange(isConnected: Bool) {
         buttonCast.isEnabled = isConnected
     }

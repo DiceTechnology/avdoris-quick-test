@@ -19,4 +19,6 @@ pod install --repo-update
 ```
 
 Docs available here:
-https://dicetechnology.github.io/avdoris-quick/
+https://dicetechnology.github.io/avdoris
+
+To test Download to Go please fill in AVDorisTestPlayer/D2G/Constants.swift with real values
