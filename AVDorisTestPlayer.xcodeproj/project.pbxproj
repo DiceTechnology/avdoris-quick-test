@@ -3,15 +3,34 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 51;
+	objectVersion = 50;
 	objects = {
 
 /* Begin PBXBuildFile section */
 		3B46EEFC250A735F0077B2FB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B46EEFB250A735F0077B2FB /* AppDelegate.swift */; };
-		3B46EF00250A735F0077B2FB /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B46EEFF250A735F0077B2FB /* ViewController.swift */; };
+		3B46EF00250A735F0077B2FB /* PlaybackViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B46EEFF250A735F0077B2FB /* PlaybackViewController.swift */; };
 		3B46EF05250A73620077B2FB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3B46EF04250A73620077B2FB /* Assets.xcassets */; };
 		3B46EF08250A73620077B2FB /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3B46EF06250A73620077B2FB /* LaunchScreen.storyboard */; };
 		631F04D666E2CAC0FE0D2C7D /* Pods_AVDorisTestPlayer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C0F3897413A987DCF2086A58 /* Pods_AVDorisTestPlayer.framework */; };
+		DF39C6EF29BA0F2200A4CF76 /* UIView+autolayoutSize.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF39C6CC29BA0F2200A4CF76 /* UIView+autolayoutSize.swift */; };
+		DF39C6F029BA0F2200A4CF76 /* UIView+Anchors.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF39C6CD29BA0F2200A4CF76 /* UIView+Anchors.swift */; };
+		DF39C6F229BA0F2200A4CF76 /* UIView+ReturnAnchors.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF39C6CF29BA0F2200A4CF76 /* UIView+ReturnAnchors.swift */; };
+		DF39C6F329BA0F2200A4CF76 /* UIView+ReuseIdentifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF39C6D029BA0F2200A4CF76 /* UIView+ReuseIdentifier.swift */; };
+		DF39C6F429BA0F2200A4CF76 /* UIView+LayoutGuide.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF39C6D129BA0F2200A4CF76 /* UIView+LayoutGuide.swift */; };
+		DF39C6F529BA0F2200A4CF76 /* UIControl+closure.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF39C6D229BA0F2200A4CF76 /* UIControl+closure.swift */; };
+		DF39C6F629BA0F2200A4CF76 /* UIView+Subviews.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF39C6D329BA0F2200A4CF76 /* UIView+Subviews.swift */; };
+		DF39C6F829BA0F2200A4CF76 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF39C6D729BA0F2200A4CF76 /* BaseViewController.swift */; };
+		DF39C6F929BA0F2200A4CF76 /* BaseTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF39C6D829BA0F2200A4CF76 /* BaseTableViewCell.swift */; };
+		DF39C6FB29BA0F2200A4CF76 /* ScrollableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF39C6DA29BA0F2200A4CF76 /* ScrollableView.swift */; };
+		DF39C6FC29BA0F2200A4CF76 /* BaseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF39C6DB29BA0F2200A4CF76 /* BaseView.swift */; };
+		DF39C6FE29BA0F2200A4CF76 /* DownloadsPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF39C6DE29BA0F2200A4CF76 /* DownloadsPresenter.swift */; };
+		DF39C6FF29BA0F2200A4CF76 /* DownloadTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF39C6DF29BA0F2200A4CF76 /* DownloadTableViewCell.swift */; };
+		DF39C70029BA0F2200A4CF76 /* DownloadsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF39C6E029BA0F2200A4CF76 /* DownloadsViewController.swift */; };
+		DF39C70129BA0F2200A4CF76 /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF39C6E229BA0F2200A4CF76 /* TabBarController.swift */; };
+		DF39C70729BA0F2200A4CF76 /* NetworkingManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF39C6EB29BA0F2200A4CF76 /* NetworkingManager.swift */; };
+		DF39C70829BA0F2200A4CF76 /* LoadingOverlay.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF39C6ED29BA0F2200A4CF76 /* LoadingOverlay.swift */; };
+		DF39C70B29BA0F5E00A4CF76 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF39C70A29BA0F5E00A4CF76 /* Constants.swift */; };
+		DF39C70E29BA1F4600A4CF76 /* UITableview+generics.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF39C70D29BA1F4600A4CF76 /* UITableview+generics.swift */; };
 		DFB8439328CB8E87003BDC74 /* CustomPlayerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFB8439228CB8E87003BDC74 /* CustomPlayerViewController.swift */; };
 		DFEC0FAE298191370016E73D /* DorisCastManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFEC0FAD298191370016E73D /* DorisCastManager.swift */; };
 		DFEC0FB1298191830016E73D /* Dictionary+prettyPrinted.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFEC0FB0298191830016E73D /* Dictionary+prettyPrinted.swift */; };
@@ -20,13 +39,32 @@
 /* Begin PBXFileReference section */
 		3B46EEF8250A735E0077B2FB /* AVDorisTestPlayer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AVDorisTestPlayer.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3B46EEFB250A735F0077B2FB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		3B46EEFF250A735F0077B2FB /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		3B46EEFF250A735F0077B2FB /* PlaybackViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaybackViewController.swift; sourceTree = "<group>"; };
 		3B46EF04250A73620077B2FB /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		3B46EF07250A73620077B2FB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		3B46EF09250A73620077B2FB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B96C981C04A0D687BC52F187 /* Pods-AVDorisTestPlayer.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AVDorisTestPlayer.debug.xcconfig"; path = "Target Support Files/Pods-AVDorisTestPlayer/Pods-AVDorisTestPlayer.debug.xcconfig"; sourceTree = "<group>"; };
 		C0F3897413A987DCF2086A58 /* Pods_AVDorisTestPlayer.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_AVDorisTestPlayer.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		DF3616232981489700F2B5BD /* AVDorisTestPlayer.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; name = AVDorisTestPlayer.entitlements; path = ../../../../.Trash/AVDorisTestPlayer.entitlements; sourceTree = "<group>"; };
+		DF39C6CC29BA0F2200A4CF76 /* UIView+autolayoutSize.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+autolayoutSize.swift"; sourceTree = "<group>"; };
+		DF39C6CD29BA0F2200A4CF76 /* UIView+Anchors.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+Anchors.swift"; sourceTree = "<group>"; };
+		DF39C6CF29BA0F2200A4CF76 /* UIView+ReturnAnchors.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+ReturnAnchors.swift"; sourceTree = "<group>"; };
+		DF39C6D029BA0F2200A4CF76 /* UIView+ReuseIdentifier.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+ReuseIdentifier.swift"; sourceTree = "<group>"; };
+		DF39C6D129BA0F2200A4CF76 /* UIView+LayoutGuide.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+LayoutGuide.swift"; sourceTree = "<group>"; };
+		DF39C6D229BA0F2200A4CF76 /* UIControl+closure.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIControl+closure.swift"; sourceTree = "<group>"; };
+		DF39C6D329BA0F2200A4CF76 /* UIView+Subviews.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+Subviews.swift"; sourceTree = "<group>"; };
+		DF39C6D729BA0F2200A4CF76 /* BaseViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
+		DF39C6D829BA0F2200A4CF76 /* BaseTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseTableViewCell.swift; sourceTree = "<group>"; };
+		DF39C6DA29BA0F2200A4CF76 /* ScrollableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScrollableView.swift; sourceTree = "<group>"; };
+		DF39C6DB29BA0F2200A4CF76 /* BaseView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseView.swift; sourceTree = "<group>"; };
+		DF39C6DE29BA0F2200A4CF76 /* DownloadsPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DownloadsPresenter.swift; sourceTree = "<group>"; };
+		DF39C6DF29BA0F2200A4CF76 /* DownloadTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DownloadTableViewCell.swift; sourceTree = "<group>"; };
+		DF39C6E029BA0F2200A4CF76 /* DownloadsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DownloadsViewController.swift; sourceTree = "<group>"; };
+		DF39C6E229BA0F2200A4CF76 /* TabBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
+		DF39C6EB29BA0F2200A4CF76 /* NetworkingManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkingManager.swift; sourceTree = "<group>"; };
+		DF39C6ED29BA0F2200A4CF76 /* LoadingOverlay.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoadingOverlay.swift; sourceTree = "<group>"; };
+		DF39C70A29BA0F5E00A4CF76 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		DF39C70D29BA1F4600A4CF76 /* UITableview+generics.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableview+generics.swift"; sourceTree = "<group>"; };
 		DFB8439228CB8E87003BDC74 /* CustomPlayerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomPlayerViewController.swift; sourceTree = "<group>"; };
 		DFEC0FAD298191370016E73D /* DorisCastManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DorisCastManager.swift; sourceTree = "<group>"; };
 		DFEC0FB0298191830016E73D /* Dictionary+prettyPrinted.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Dictionary+prettyPrinted.swift"; sourceTree = "<group>"; };
@@ -68,9 +106,10 @@
 			children = (
 				DF3616232981489700F2B5BD /* AVDorisTestPlayer.entitlements */,
 				3B46EEFB250A735F0077B2FB /* AppDelegate.swift */,
-				3B46EEFF250A735F0077B2FB /* ViewController.swift */,
-				DFEC0FAD298191370016E73D /* DorisCastManager.swift */,
-				DFB8439228CB8E87003BDC74 /* CustomPlayerViewController.swift */,
+				DF39C6E229BA0F2200A4CF76 /* TabBarController.swift */,
+				DF39C71029BB69FF00A4CF76 /* Cast */,
+				DF39C70F29BB69F700A4CF76 /* Playback */,
+				DF39C6CA29BA0EEF00A4CF76 /* D2G */,
 				DFEC0FAF298191690016E73D /* Extensions */,
 				3B46EF04250A73620077B2FB /* Assets.xcassets */,
 				3B46EF06250A73620077B2FB /* LaunchScreen.storyboard */,
@@ -96,9 +135,83 @@
 			path = Pods;
 			sourceTree = "<group>";
 		};
+		DF39C6CA29BA0EEF00A4CF76 /* D2G */ = {
+			isa = PBXGroup;
+			children = (
+				DF39C70A29BA0F5E00A4CF76 /* Constants.swift */,
+				DF39C6D629BA0F2200A4CF76 /* Base */,
+				DF39C6DC29BA0F2200A4CF76 /* Downloads */,
+				DF39C6EA29BA0F2200A4CF76 /* Networking */,
+				DF39C6EC29BA0F2200A4CF76 /* Utils */,
+			);
+			path = D2G;
+			sourceTree = "<group>";
+		};
+		DF39C6D629BA0F2200A4CF76 /* Base */ = {
+			isa = PBXGroup;
+			children = (
+				DF39C6D729BA0F2200A4CF76 /* BaseViewController.swift */,
+				DF39C6D829BA0F2200A4CF76 /* BaseTableViewCell.swift */,
+				DF39C6DA29BA0F2200A4CF76 /* ScrollableView.swift */,
+				DF39C6DB29BA0F2200A4CF76 /* BaseView.swift */,
+			);
+			path = Base;
+			sourceTree = "<group>";
+		};
+		DF39C6DC29BA0F2200A4CF76 /* Downloads */ = {
+			isa = PBXGroup;
+			children = (
+				DF39C6DE29BA0F2200A4CF76 /* DownloadsPresenter.swift */,
+				DF39C6DF29BA0F2200A4CF76 /* DownloadTableViewCell.swift */,
+				DF39C6E029BA0F2200A4CF76 /* DownloadsViewController.swift */,
+			);
+			path = Downloads;
+			sourceTree = "<group>";
+		};
+		DF39C6EA29BA0F2200A4CF76 /* Networking */ = {
+			isa = PBXGroup;
+			children = (
+				DF39C6EB29BA0F2200A4CF76 /* NetworkingManager.swift */,
+			);
+			path = Networking;
+			sourceTree = "<group>";
+		};
+		DF39C6EC29BA0F2200A4CF76 /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				DF39C6ED29BA0F2200A4CF76 /* LoadingOverlay.swift */,
+			);
+			path = Utils;
+			sourceTree = "<group>";
+		};
+		DF39C70F29BB69F700A4CF76 /* Playback */ = {
+			isa = PBXGroup;
+			children = (
+				3B46EEFF250A735F0077B2FB /* PlaybackViewController.swift */,
+				DFB8439228CB8E87003BDC74 /* CustomPlayerViewController.swift */,
+			);
+			path = Playback;
+			sourceTree = "<group>";
+		};
+		DF39C71029BB69FF00A4CF76 /* Cast */ = {
+			isa = PBXGroup;
+			children = (
+				DFEC0FAD298191370016E73D /* DorisCastManager.swift */,
+			);
+			path = Cast;
+			sourceTree = "<group>";
+		};
 		DFEC0FAF298191690016E73D /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
+				DF39C6CC29BA0F2200A4CF76 /* UIView+autolayoutSize.swift */,
+				DF39C6CD29BA0F2200A4CF76 /* UIView+Anchors.swift */,
+				DF39C6CF29BA0F2200A4CF76 /* UIView+ReturnAnchors.swift */,
+				DF39C6D029BA0F2200A4CF76 /* UIView+ReuseIdentifier.swift */,
+				DF39C6D129BA0F2200A4CF76 /* UIView+LayoutGuide.swift */,
+				DF39C6D229BA0F2200A4CF76 /* UIControl+closure.swift */,
+				DF39C6D329BA0F2200A4CF76 /* UIView+Subviews.swift */,
+				DF39C70D29BA1F4600A4CF76 /* UITableview+generics.swift */,
 				DFEC0FB0298191830016E73D /* Dictionary+prettyPrinted.swift */,
 			);
 			path = Extensions;
@@ -236,11 +349,30 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DF39C6F929BA0F2200A4CF76 /* BaseTableViewCell.swift in Sources */,
+				DF39C6FB29BA0F2200A4CF76 /* ScrollableView.swift in Sources */,
 				DFEC0FAE298191370016E73D /* DorisCastManager.swift in Sources */,
+				DF39C6F529BA0F2200A4CF76 /* UIControl+closure.swift in Sources */,
 				DFEC0FB1298191830016E73D /* Dictionary+prettyPrinted.swift in Sources */,
-				3B46EF00250A735F0077B2FB /* ViewController.swift in Sources */,
+				DF39C70129BA0F2200A4CF76 /* TabBarController.swift in Sources */,
+				DF39C6F329BA0F2200A4CF76 /* UIView+ReuseIdentifier.swift in Sources */,
+				DF39C70029BA0F2200A4CF76 /* DownloadsViewController.swift in Sources */,
+				DF39C6F629BA0F2200A4CF76 /* UIView+Subviews.swift in Sources */,
+				DF39C6F829BA0F2200A4CF76 /* BaseViewController.swift in Sources */,
+				DF39C70729BA0F2200A4CF76 /* NetworkingManager.swift in Sources */,
+				DF39C6EF29BA0F2200A4CF76 /* UIView+autolayoutSize.swift in Sources */,
+				DF39C70E29BA1F4600A4CF76 /* UITableview+generics.swift in Sources */,
+				3B46EF00250A735F0077B2FB /* PlaybackViewController.swift in Sources */,
+				DF39C6F229BA0F2200A4CF76 /* UIView+ReturnAnchors.swift in Sources */,
 				DFB8439328CB8E87003BDC74 /* CustomPlayerViewController.swift in Sources */,
+				DF39C6FF29BA0F2200A4CF76 /* DownloadTableViewCell.swift in Sources */,
+				DF39C70829BA0F2200A4CF76 /* LoadingOverlay.swift in Sources */,
+				DF39C6FE29BA0F2200A4CF76 /* DownloadsPresenter.swift in Sources */,
 				3B46EEFC250A735F0077B2FB /* AppDelegate.swift in Sources */,
+				DF39C6FC29BA0F2200A4CF76 /* BaseView.swift in Sources */,
+				DF39C6F429BA0F2200A4CF76 /* UIView+LayoutGuide.swift in Sources */,
+				DF39C70B29BA0F5E00A4CF76 /* Constants.swift in Sources */,
+				DF39C6F029BA0F2200A4CF76 /* UIView+Anchors.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

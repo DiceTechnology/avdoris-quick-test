@@ -19,4 +19,16 @@ pod install --repo-update
 ```
 
 Docs available here:
-https://dicetechnology.github.io/avdoris-quick/
+https://dicetechnology.github.io/avdoris
+
+## Download to Go
+To test Download to Go please fill all unset values in
+```
+AVDorisTestPlayer/D2G/Constants.swift
+```
+
+## Google Cast
+To test Google Cast please fill all unset values in 
+```
+AVDorisTestPlayer/Cast/DorisCastManager.swift
+```

@@ -4,7 +4,7 @@
 //
 //  Created by Yaroslav Lvov on 09.09.2022.
 //  Copyright © 2022 Endeavor Streaming. All rights reserved.
-//
+//3
 
 import AVDoris
 import AVKit
@@ -16,6 +16,7 @@ enum PlaybackItemType {
     case daiLiveSource
     case csaiVodStream
     case csaiLiveStream
+    case downloadedSource(filePath: URL)
 }
 
 class CustomPlayerViewController: AVPlayerViewController, AVPictureInPictureControllerDelegate {
@@ -109,6 +110,8 @@ class CustomPlayerViewController: AVPlayerViewController, AVPictureInPictureCont
             loadCSAIVodStream()
         case .csaiLiveStream:
             loadCSAILiveStream()
+        case .downloadedSource(let filePath):
+            loadDownloadedContent(filePath: filePath)
         }
     }
     
@@ -136,7 +139,7 @@ class CustomPlayerViewController: AVPlayerViewController, AVPictureInPictureCont
             initialSeek = .position(startAt, isAccurate: false)
         }
         let source = DorisSource(playerItem: AVPlayerItem(url: URL(string: "https://bitdash-a.akamaihd.net/content/sintel/hls/playlist.m3u8")!))
-        doris?.load(source: source, initialSeek: initialSeek, autoStart: false)
+        doris?.load(source: source, initialSeek: initialSeek)
     }
     
     private func loadSimpleLiveSource(startAt: Double? = nil) {
@@ -174,7 +177,7 @@ class CustomPlayerViewController: AVPlayerViewController, AVPictureInPictureCont
         let adsURL = "https://pubads.g.doubleclick.net/gampad/ads?sz=640x480&iu=/124319096/external/ad_rule_samples&ciu_szs=300x250&ad_rule=1&impl=s&gdfp_req=1&env=vp&output=vmap&unviewed_position_start=1&cust_params=deployment%3Ddevsite%26sample_ar%3Dpreonly&cmsid=496&vid=short_onecue&correlator="
         
         let contentURL = URL(string: "https://storage.googleapis.com/gvabox/media/samples/stock.mp4")!
-        let source = CSAISource(contentURL: contentURL, adsURL: adsURL)
+        let source = CSAISource(contentURL: contentURL, initialAdsURL: adsURL)
         
         doris?.load(source: source)
     }
@@ -184,9 +187,17 @@ class CustomPlayerViewController: AVPlayerViewController, AVPictureInPictureCont
         let adsURL = "https://pubads.g.doubleclick.net/gampad/ads?sz=640x480&iu=/124319096/external/ad_rule_samples&ciu_szs=300x250&ad_rule=1&impl=s&gdfp_req=1&env=vp&output=vmap&unviewed_position_start=1&cust_params=deployment%3Ddevsite%26sample_ar%3Dpreonly&cmsid=496&vid=short_onecue&correlator="
         
         let contentURL = URL(string: "https://cph-p2p-msl.akamaized.net/hls/live/2000341/test/master.m3u8")!
-        let source = CSAISource(contentURL: contentURL, adsURL: adsURL)
+        let source = CSAISource(contentURL: contentURL, initialAdsURL: adsURL)
         
         doris?.load(source: source)
+    }
+    
+    private func loadDownloadedContent(filePath: URL) {
+        let source = DorisSource(playerItem: AVPlayerItem(url: filePath))
+        source.drm = DorisDRMSource(contentUrl: filePath.absoluteString,
+                                    croToken: nil,
+                                    licensingServerUrl: nil)
+        doris?.load(source: source, initialSeek: nil)
     }
 }
 
