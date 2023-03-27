@@ -1,5 +1,5 @@
 //
-//  ViewController.swift
+//  DemoPlaybackViewController.swift
 //  AVDorisTestPlayer
 //
 //  Created by Gabor Balogh on 10/09/2020.
@@ -11,7 +11,7 @@ import AVKit
 import UIKit
 import GoogleCast
 
-class PlaybackViewController: UIViewController {
+class DemoPlaybackViewController: UIViewController {
     lazy var buttonVod: UIButton = {
         let button = UIButton()
         button.setTitleColor(.black, for: .normal)
@@ -151,7 +151,7 @@ class PlaybackViewController: UIViewController {
     }
 }
 
-extension PlaybackViewController: DorisCastManagerDelegate {
+extension DemoPlaybackViewController: DorisCastManagerDelegate {
     func castStateDidChange(isConnected: Bool) {
         buttonCast.isEnabled = isConnected
     }

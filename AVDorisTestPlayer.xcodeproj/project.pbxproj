@@ -8,7 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		3B46EEFC250A735F0077B2FB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B46EEFB250A735F0077B2FB /* AppDelegate.swift */; };
-		3B46EF00250A735F0077B2FB /* PlaybackViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B46EEFF250A735F0077B2FB /* PlaybackViewController.swift */; };
+		3B46EF00250A735F0077B2FB /* DemoPlaybackViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B46EEFF250A735F0077B2FB /* DemoPlaybackViewController.swift */; };
 		3B46EF05250A73620077B2FB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3B46EF04250A73620077B2FB /* Assets.xcassets */; };
 		3B46EF08250A73620077B2FB /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3B46EF06250A73620077B2FB /* LaunchScreen.storyboard */; };
 		631F04D666E2CAC0FE0D2C7D /* Pods_AVDorisTestPlayer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C0F3897413A987DCF2086A58 /* Pods_AVDorisTestPlayer.framework */; };
@@ -31,6 +31,8 @@
 		DF39C70829BA0F2200A4CF76 /* LoadingOverlay.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF39C6ED29BA0F2200A4CF76 /* LoadingOverlay.swift */; };
 		DF39C70B29BA0F5E00A4CF76 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF39C70A29BA0F5E00A4CF76 /* Constants.swift */; };
 		DF39C70E29BA1F4600A4CF76 /* UITableview+generics.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF39C70D29BA1F4600A4CF76 /* UITableview+generics.swift */; };
+		DF51767129CC8B6300DE2BD6 /* DicePlaybackViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF51767029CC8B6300DE2BD6 /* DicePlaybackViewController.swift */; };
+		DF51767329CC9EC100DE2BD6 /* UIView+keyboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF51767229CC9EC100DE2BD6 /* UIView+keyboard.swift */; };
 		DFB8439328CB8E87003BDC74 /* CustomPlayerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFB8439228CB8E87003BDC74 /* CustomPlayerViewController.swift */; };
 		DFEC0FAE298191370016E73D /* DorisCastManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFEC0FAD298191370016E73D /* DorisCastManager.swift */; };
 		DFEC0FB1298191830016E73D /* Dictionary+prettyPrinted.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFEC0FB0298191830016E73D /* Dictionary+prettyPrinted.swift */; };
@@ -39,7 +41,7 @@
 /* Begin PBXFileReference section */
 		3B46EEF8250A735E0077B2FB /* AVDorisTestPlayer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AVDorisTestPlayer.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3B46EEFB250A735F0077B2FB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		3B46EEFF250A735F0077B2FB /* PlaybackViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaybackViewController.swift; sourceTree = "<group>"; };
+		3B46EEFF250A735F0077B2FB /* DemoPlaybackViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DemoPlaybackViewController.swift; sourceTree = "<group>"; };
 		3B46EF04250A73620077B2FB /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		3B46EF07250A73620077B2FB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		3B46EF09250A73620077B2FB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -65,6 +67,8 @@
 		DF39C6ED29BA0F2200A4CF76 /* LoadingOverlay.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoadingOverlay.swift; sourceTree = "<group>"; };
 		DF39C70A29BA0F5E00A4CF76 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		DF39C70D29BA1F4600A4CF76 /* UITableview+generics.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableview+generics.swift"; sourceTree = "<group>"; };
+		DF51767029CC8B6300DE2BD6 /* DicePlaybackViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DicePlaybackViewController.swift; sourceTree = "<group>"; };
+		DF51767229CC9EC100DE2BD6 /* UIView+keyboard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+keyboard.swift"; sourceTree = "<group>"; };
 		DFB8439228CB8E87003BDC74 /* CustomPlayerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomPlayerViewController.swift; sourceTree = "<group>"; };
 		DFEC0FAD298191370016E73D /* DorisCastManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DorisCastManager.swift; sourceTree = "<group>"; };
 		DFEC0FB0298191830016E73D /* Dictionary+prettyPrinted.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Dictionary+prettyPrinted.swift"; sourceTree = "<group>"; };
@@ -187,8 +191,9 @@
 		DF39C70F29BB69F700A4CF76 /* Playback */ = {
 			isa = PBXGroup;
 			children = (
-				3B46EEFF250A735F0077B2FB /* PlaybackViewController.swift */,
+				3B46EEFF250A735F0077B2FB /* DemoPlaybackViewController.swift */,
 				DFB8439228CB8E87003BDC74 /* CustomPlayerViewController.swift */,
+				DF51767029CC8B6300DE2BD6 /* DicePlaybackViewController.swift */,
 			);
 			path = Playback;
 			sourceTree = "<group>";
@@ -209,6 +214,7 @@
 				DF39C6CF29BA0F2200A4CF76 /* UIView+ReturnAnchors.swift */,
 				DF39C6D029BA0F2200A4CF76 /* UIView+ReuseIdentifier.swift */,
 				DF39C6D129BA0F2200A4CF76 /* UIView+LayoutGuide.swift */,
+				DF51767229CC9EC100DE2BD6 /* UIView+keyboard.swift */,
 				DF39C6D229BA0F2200A4CF76 /* UIControl+closure.swift */,
 				DF39C6D329BA0F2200A4CF76 /* UIView+Subviews.swift */,
 				DF39C70D29BA1F4600A4CF76 /* UITableview+generics.swift */,
@@ -353,6 +359,7 @@
 				DF39C6FB29BA0F2200A4CF76 /* ScrollableView.swift in Sources */,
 				DFEC0FAE298191370016E73D /* DorisCastManager.swift in Sources */,
 				DF39C6F529BA0F2200A4CF76 /* UIControl+closure.swift in Sources */,
+				DF51767129CC8B6300DE2BD6 /* DicePlaybackViewController.swift in Sources */,
 				DFEC0FB1298191830016E73D /* Dictionary+prettyPrinted.swift in Sources */,
 				DF39C70129BA0F2200A4CF76 /* TabBarController.swift in Sources */,
 				DF39C6F329BA0F2200A4CF76 /* UIView+ReuseIdentifier.swift in Sources */,
@@ -362,7 +369,8 @@
 				DF39C70729BA0F2200A4CF76 /* NetworkingManager.swift in Sources */,
 				DF39C6EF29BA0F2200A4CF76 /* UIView+autolayoutSize.swift in Sources */,
 				DF39C70E29BA1F4600A4CF76 /* UITableview+generics.swift in Sources */,
-				3B46EF00250A735F0077B2FB /* PlaybackViewController.swift in Sources */,
+				3B46EF00250A735F0077B2FB /* DemoPlaybackViewController.swift in Sources */,
+				DF51767329CC9EC100DE2BD6 /* UIView+keyboard.swift in Sources */,
 				DF39C6F229BA0F2200A4CF76 /* UIView+ReturnAnchors.swift in Sources */,
 				DFB8439328CB8E87003BDC74 /* CustomPlayerViewController.swift in Sources */,
 				DF39C6FF29BA0F2200A4CF76 /* DownloadTableViewCell.swift in Sources */,
