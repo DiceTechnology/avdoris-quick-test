@@ -11,8 +11,12 @@ import AVKit
 import UIKit
 import GoogleCast
 
+<<<<<<<< HEAD:AVDorisTestPlayer/Playback/DemoPlaybackViewController.swift
 class DemoPlaybackViewController: UIViewController {
-   lazy var buttonVod: UIButton = {
+========
+class PlaybackViewController: UIViewController {
+>>>>>>>> fea1b4d0e6afaf159b15014288efcdaa7f1a81ad:AVDorisTestPlayer/Playback/PlaybackViewController.swift
+    lazy var buttonVod: UIButton = {
         let button = UIButton()
         button.setTitleColor(.black, for: .normal)
         button.setTitle("Play VOD", for: .normal)
@@ -151,8 +155,11 @@ class DemoPlaybackViewController: UIViewController {
     }
 }
 
-
+<<<<<<<< HEAD:AVDorisTestPlayer/Playback/DemoPlaybackViewController.swift
 extension DemoPlaybackViewController: DorisCastManagerDelegate {
+========
+extension PlaybackViewController: DorisCastManagerDelegate {
+>>>>>>>> fea1b4d0e6afaf159b15014288efcdaa7f1a81ad:AVDorisTestPlayer/Playback/PlaybackViewController.swift
     func castStateDidChange(isConnected: Bool) {
         buttonCast.isEnabled = isConnected
     }
