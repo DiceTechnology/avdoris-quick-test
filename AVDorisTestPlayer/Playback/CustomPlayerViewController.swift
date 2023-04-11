@@ -16,6 +16,7 @@ enum PlaybackItemType {
     case daiLiveSource
     case csaiVodStream
     case csaiLiveStream
+    case diceVideo(source: DorisSource)
     case downloadedSource(filePath: URL)
 }
 
@@ -112,6 +113,8 @@ class CustomPlayerViewController: AVPlayerViewController, AVPictureInPictureCont
             loadCSAILiveStream()
         case .downloadedSource(let filePath):
             loadDownloadedContent(filePath: filePath)
+        case .diceVideo(let source):
+            doris?.load(source: source)
         }
     }
     
