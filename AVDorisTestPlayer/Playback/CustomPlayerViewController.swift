@@ -83,7 +83,8 @@ class CustomPlayerViewController: AVPlayerViewController, AVPictureInPictureCont
                                    adsConfig: adsConfig)
         
         doris = AVDorisFactory.create(player: contentPlayer, config: config, output: self)
-        
+        //Configure logger if needed
+        DorisLogger.logFilter = [.info, .warning, .error, .critical, .state] //[.debug, .events]
         
         //MARK: Optional
         //if you use MUX, make sure you call doris?.cleanUpMux() when you are done with playback, to destroy AVplayerViewController instance it is monitoring
@@ -180,7 +181,7 @@ class CustomPlayerViewController: AVPlayerViewController, AVPictureInPictureCont
         let adsURL = "https://pubads.g.doubleclick.net/gampad/ads?sz=640x480&iu=/124319096/external/ad_rule_samples&ciu_szs=300x250&ad_rule=1&impl=s&gdfp_req=1&env=vp&output=vmap&unviewed_position_start=1&cust_params=deployment%3Ddevsite%26sample_ar%3Dpreonly&cmsid=496&vid=short_onecue&correlator="
         
         let contentURL = URL(string: "https://storage.googleapis.com/gvabox/media/samples/stock.mp4")!
-        let source = CSAISource(contentURL: contentURL, initialAdsURL: adsURL)
+        let source = CSAISource(contentURL: contentURL, preroll: adsURL)
         
         doris?.load(source: source)
     }
@@ -190,7 +191,7 @@ class CustomPlayerViewController: AVPlayerViewController, AVPictureInPictureCont
         let adsURL = "https://pubads.g.doubleclick.net/gampad/ads?sz=640x480&iu=/124319096/external/ad_rule_samples&ciu_szs=300x250&ad_rule=1&impl=s&gdfp_req=1&env=vp&output=vmap&unviewed_position_start=1&cust_params=deployment%3Ddevsite%26sample_ar%3Dpreonly&cmsid=496&vid=short_onecue&correlator="
         
         let contentURL = URL(string: "https://cph-p2p-msl.akamaized.net/hls/live/2000341/test/master.m3u8")!
-        let source = CSAISource(contentURL: contentURL, initialAdsURL: adsURL)
+        let source = CSAISource(contentURL: contentURL, preroll: adsURL)
         
         doris?.load(source: source)
     }
@@ -207,11 +208,10 @@ class CustomPlayerViewController: AVPlayerViewController, AVPictureInPictureCont
 
 extension CustomPlayerViewController: DorisPlayerOutputProtocol {
     func onPlayerStateChanged(old: DorisPlayerState, new: DorisPlayerState) {
-        print(">>> DorisPlayerState:", String(describing: new))
+        //
     }
     
     func onPlayerEvent(_ event: DorisPlayerEvent) {
-        print(">>> DorisPlayerEvent:", String(describing: event))
         switch event {
         case .streamTypeRecognized(streamType: let streamType):
             switch streamType {
@@ -233,8 +233,6 @@ extension CustomPlayerViewController: DorisPlayerOutputProtocol {
     }
     
     func onAdvertisementEvent(_ event: DorisAdsEvent) {
-        print(">>> DorisAdsEvent:", String(describing: event))
-
         switch event {
         case .adBreakEnded:
             adsOverlayView.isHidden = true
@@ -247,8 +245,6 @@ extension CustomPlayerViewController: DorisPlayerOutputProtocol {
     }
     
     func onRemoteCommandEvent(_ event: DorisRemoteCommandEvent) {
-        print(">>> DorisRemoteCommandEvent:", String(describing: event))
-
         switch event {
         case .play:
             doris?.play()
