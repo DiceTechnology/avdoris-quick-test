@@ -91,14 +91,15 @@ class DicePlaybackViewController: UIViewController {
 //                                                     apiConfig: DiceAPIConfig(realm: self.realmTextFiled.text ?? "",
 //                                                                              apiKey: self.apiKeyTextFiled.text ?? ""))
                                
-            /// Use `DiceSourceResolverLogin` for testing as it maked login request before stream request
-            self.sourceResolver = DiceSourceResolverLogin(userName: self.usernameTextFiled.text ?? "",
-                                                          password: self.passwordTextFiled.text ?? "",
-                                                          apiConfig: DiceAPIConfig(realm: self.realmTextFiled.text ?? "",
+            /// Use `DiceSourceResolver` for testing as it maked login request before stream request
+            self.sourceResolver = DiceSourceResolver(apiConfig: DiceAPIConfig(realm: self.realmTextFiled.text ?? "",
                                                                                    environment: .staging,
-                                                                                   apiKey: self.apiKeyTextFiled.text ?? ""))
+                                                                              apiKey: self.apiKeyTextFiled.text ?? ""))
+                                                    .set(authType: .credentials(userName:  self.usernameTextFiled.text ?? "", password: self.passwordTextFiled.text ?? ""))
+                                                    .set(videoId: self.videoIDTextFiled.text ?? "", isLive: self.isLiveSwitch.isOn)
+
             self.spinner.startAnimating()
-            self.sourceResolver?.resolveSource(videoId: self.videoIDTextFiled.text ?? "", isLive: self.isLiveSwitch.isOn) { result in
+            self.sourceResolver?.resolveSource() { result in
                 self.spinner.stopAnimating()
                 switch result {
                 case .success(let source):
