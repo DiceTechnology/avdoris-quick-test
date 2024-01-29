@@ -94,7 +94,8 @@ class DicePlaybackViewController: UIViewController {
             /// Use `DiceSourceResolver` for testing as it maked login request before stream request
             self.sourceResolver = DiceSourceResolver(apiConfig: DiceAPIConfig(realm: self.realmTextFiled.text ?? "",
                                                                                    environment: .staging,
-                                                                              apiKey: self.apiKeyTextFiled.text ?? ""))
+                                                                              apiKey: self.apiKeyTextFiled.text ?? "",
+                                                                              adsMacroHeaders: AdsMacroHeadersBuilder.default.headers))
                                                     .set(authType: .credentials(userName:  self.usernameTextFiled.text ?? "", password: self.passwordTextFiled.text ?? ""))
                                                     .set(videoId: self.videoIDTextFiled.text ?? "", isLive: self.isLiveSwitch.isOn)
 

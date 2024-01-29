@@ -5,6 +5,7 @@ target 'AVDorisTestPlayer' do
 
   pod 'AVDoris', "= 1.9.8"
   pod 'google-cast-sdk', "= 4.7.0"
+  pod 'DeviceKit', "= 5.2.1"
 end
 
 post_install do |installer|
