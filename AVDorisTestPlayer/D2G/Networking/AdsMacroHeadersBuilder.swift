@@ -10,11 +10,12 @@ import Foundation
 import AdSupport
 import DeviceKit
 
-
 struct AdsMacroHeadersBuilder {
     static let `default` = AdsMacroHeadersBuilder()
 
+    //Terms and Conditions Framework String. This is an encoded string used in GDPR compliant territories. (OneTrusSDK)
     let tcf: String
+    //US Privacy. This is the String containing information regarding the consent for CCPA in US territory. (OneTrustSDK)
     let usp: String
 
     init(tcf: String = "", usp: String = "") {
@@ -23,42 +24,41 @@ struct AdsMacroHeadersBuilder {
     }
 
     var appName: String { return Bundle.main.infoDictionary?["CFBundleName"] as? String ?? "" }
-
     var appVersion: String { return Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String ?? "" }
-
-    var isTrackingEnabled: Bool { return !ASIdentifierManager.shared().isAdvertisingTrackingEnabled }
-
     var screenHeight: String { return "\(UIScreen.main.bounds.size.height)" }
-
     var screenWidth: String { return "\(UIScreen.main.bounds.size.width)" }
+    // AD_CONFIGURATION_OPERATING_SYSTEMS { iOS: 13 ...... }
+    var deviceOS: String { return "13" }
+    var deviceOSVersion: String { return UIDevice.current.systemVersion }
+    // AD_CONFIGURATION_DEVICE_TYPES = { tv Phone: 4, Tablet: 5 }
+    var deviceType: String { return UIDevice.current.userInterfaceIdiom == .phone ? "4" : "5" }
+    var bundleId: String { return Bundle.main.bundleIdentifier ?? "" }
+    var deviceManufacturer: String { return "Apple" }
+    var deviceModel: String { return "\(Device.current)" }
+    
+    ///for iOS 14+ use AppTrackingTransparency to obtain personalized ads tracking status
+    ///https://developer.apple.com/documentation/apptrackingtransparency
+    ///Make sure  `NSUserTrackingUsageDescription` is present in Info.plist
+    /**
+     import AppTrackingTransparency
 
+     ATTrackingManager.requestTrackingAuthorization { status in
+         let isLat = status == .authorized ? true : false
+     }
+    */
+    var isLat: Bool { return ASIdentifierManager.shared().isAdvertisingTrackingEnabled }
+    //for iOS 14+ use AppTrackingTransparency
+    var idfa: String { return isLat ? ASIdentifierManager.shared().advertisingIdentifier.uuidString : "" }
     var deviceLanguage: String {
         let languageCode = Locale.current.languageCode ?? "en"
         let regionCode = Locale.current.regionCode ?? "US"
         return "\(languageCode)_\(regionCode)"
     }
-
-    var deviceOS: String { return "13" } // AD_CONFIGURATION_OPERATING_SYSTEMS { iOS: 13 ...... }
-
-    var deviceOSVersion: String { return UIDevice.current.systemVersion }
-
-    var deviceType: String { return UIDevice.current.userInterfaceIdiom == .phone ? "4" : "5" } // AD_CONFIGURATION_DEVICE_TYPES = { tv Phone: 4, Tablet: 5 }
-
-    var bundleId: String { return Bundle.main.bundleIdentifier ?? "" }
-
-    var deviceManufacturer: String { return "Apple" }
-
-    var deviceModel: String { return "\(Device.current)" }
-
-    var isLat: Bool { return ASIdentifierManager.shared().isAdvertisingTrackingEnabled }
-
-    var idfa: String { return isLat ? ASIdentifierManager.shared().advertisingIdentifier.uuidString : "" }
-
+    
     var headers: [String: String] {
         return [
             "CM-APP-NAME": appName,
             "CM-APP-VERSION": appVersion,
-            "CM-DVC-DNT": isTrackingEnabled ? "0" : "1",
             "CM-DVC-H": screenHeight,
             "CM-DVC-W": screenWidth,
             "CM-DVC-LANG": deviceLanguage,

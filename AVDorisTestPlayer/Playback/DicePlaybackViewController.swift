@@ -85,30 +85,28 @@ class DicePlaybackViewController: UIViewController {
             guard let self = self else { return }
 
             /// Use `DiceSourceResolver` if you already have auth tokens (in doris consumer app)
-//            self.sourceResolver = DiceSourceResolver(videoId: self.videoIDTextFiled.text ?? "",
-//                                                     isLive: self.isLiveSwitch.isOn,
-//                                                     authToken: "<auth token>",
-//                                                     apiConfig: DiceAPIConfig(realm: self.realmTextFiled.text ?? "",
-//                                                                              apiKey: self.apiKeyTextFiled.text ?? ""))
-                               
-            /// Use `DiceSourceResolver` for testing as it maked login request before stream request
-            self.sourceResolver = DiceSourceResolver(apiConfig: DiceAPIConfig(realm: self.realmTextFiled.text ?? "",
-                                                                                   environment: .staging,
-                                                                              apiKey: self.apiKeyTextFiled.text ?? "",
-                                                                              adsMacroHeaders: AdsMacroHeadersBuilder.default.headers))
-                                                    .set(authType: .credentials(userName:  self.usernameTextFiled.text ?? "", password: self.passwordTextFiled.text ?? ""))
-                                                    .set(videoId: self.videoIDTextFiled.text ?? "", isLive: self.isLiveSwitch.isOn)
-
+            
+            let config = DiceAPIConfig(realm: self.realmTextFiled.text ?? "",
+                                       environment: .staging,
+                                       apiKey: self.apiKeyTextFiled.text ?? "",
+                                       adsMacroHeaders: AdsMacroHeadersBuilder.default.headers)
+            
+            sourceResolver = DiceSourceResolver(apiConfig: config)
+            
             self.spinner.startAnimating()
-            self.sourceResolver?.resolveSource() { result in
-                self.spinner.stopAnimating()
-                switch result {
-                case .success(let source):
-                    self.present(CustomPlayerViewController(.diceVideo(source: source)), animated: true)
-                case .failure(let error):
-                    print(error)
+
+            sourceResolver
+                .set(authType: .credentials(userName:  self.usernameTextFiled.text ?? "", password: self.passwordTextFiled.text ?? ""))
+                .set(videoId: self.videoIDTextFiled.text ?? "", isLive: self.isLiveSwitch.isOn)
+                .resolveSource { result in
+                    self.spinner.stopAnimating()
+                    switch result {
+                    case .success(let source):
+                        self.present(CustomPlayerViewController(.diceVideo(source: source)), animated: true)
+                    case .failure(let error):
+                        print(error)
+                    }
                 }
-            }
         }
         button.addAction(action, for: .touchUpInside)
         return button
