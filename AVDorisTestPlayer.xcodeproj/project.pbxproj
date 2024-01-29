@@ -12,6 +12,7 @@
 		3B46EF05250A73620077B2FB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3B46EF04250A73620077B2FB /* Assets.xcassets */; };
 		3B46EF08250A73620077B2FB /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3B46EF06250A73620077B2FB /* LaunchScreen.storyboard */; };
 		52A67C3CA233B65525C1B1E0 /* Pods_AVDorisTestPlayer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4FFA47FDDFFC5D7A678F9B42 /* Pods_AVDorisTestPlayer.framework */; };
+		87BE605D2B63CD7B006EE1D0 /* AdsMacroHeadersBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87BE605C2B63CD7B006EE1D0 /* AdsMacroHeadersBuilder.swift */; };
 		DF39C6EF29BA0F2200A4CF76 /* UIView+autolayoutSize.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF39C6CC29BA0F2200A4CF76 /* UIView+autolayoutSize.swift */; };
 		DF39C6F029BA0F2200A4CF76 /* UIView+Anchors.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF39C6CD29BA0F2200A4CF76 /* UIView+Anchors.swift */; };
 		DF39C6F229BA0F2200A4CF76 /* UIView+ReturnAnchors.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF39C6CF29BA0F2200A4CF76 /* UIView+ReturnAnchors.swift */; };
@@ -47,6 +48,7 @@
 		3B46EF07250A73620077B2FB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		3B46EF09250A73620077B2FB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4FFA47FDDFFC5D7A678F9B42 /* Pods_AVDorisTestPlayer.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_AVDorisTestPlayer.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		87BE605C2B63CD7B006EE1D0 /* AdsMacroHeadersBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdsMacroHeadersBuilder.swift; sourceTree = "<group>"; };
 		BF09AC13BDFE6FB3FC01E338 /* Pods-AVDorisTestPlayer.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AVDorisTestPlayer.debug.xcconfig"; path = "Target Support Files/Pods-AVDorisTestPlayer/Pods-AVDorisTestPlayer.debug.xcconfig"; sourceTree = "<group>"; };
 		DF3616232981489700F2B5BD /* AVDorisTestPlayer.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; name = AVDorisTestPlayer.entitlements; path = ../../../../.Trash/AVDorisTestPlayer.entitlements; sourceTree = "<group>"; };
 		DF39C6CC29BA0F2200A4CF76 /* UIView+autolayoutSize.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+autolayoutSize.swift"; sourceTree = "<group>"; };
@@ -176,6 +178,7 @@
 			isa = PBXGroup;
 			children = (
 				DF39C6EB29BA0F2200A4CF76 /* NetworkingManager.swift */,
+				87BE605C2B63CD7B006EE1D0 /* AdsMacroHeadersBuilder.swift */,
 			);
 			path = Networking;
 			sourceTree = "<group>";
@@ -366,6 +369,7 @@
 				DF39C70029BA0F2200A4CF76 /* DownloadsViewController.swift in Sources */,
 				DF39C6F629BA0F2200A4CF76 /* UIView+Subviews.swift in Sources */,
 				DF39C6F829BA0F2200A4CF76 /* BaseViewController.swift in Sources */,
+				87BE605D2B63CD7B006EE1D0 /* AdsMacroHeadersBuilder.swift in Sources */,
 				DF39C70729BA0F2200A4CF76 /* NetworkingManager.swift in Sources */,
 				DF39C6EF29BA0F2200A4CF76 /* UIView+autolayoutSize.swift in Sources */,
 				DF39C70E29BA1F4600A4CF76 /* UITableview+generics.swift in Sources */,

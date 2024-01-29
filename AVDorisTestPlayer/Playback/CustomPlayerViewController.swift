@@ -24,7 +24,6 @@ class CustomPlayerViewController: AVPlayerViewController, AVPictureInPictureCont
     lazy var adsOverlayView: UIView = {
         let adsOverlayView = UIView()
         adsOverlayView.isHidden = true // hide initially and manage isHidden based on AdvertisementEvent.AD_BREAK_ENDED, AdvertisementEvent.AD_BREAK_STARTED
-        adsOverlayView.frame = UIScreen.main.bounds
         return adsOverlayView
     }()
     
@@ -37,6 +36,19 @@ class CustomPlayerViewController: AVPlayerViewController, AVPictureInPictureCont
         playbackItemType = type
         super.init(nibName: nil, bundle: nil)
         self.modalPresentationStyle = .overCurrentContext
+        addObserver(self, forKeyPath: #keyPath(AVPlayerViewController.videoBounds), options: [.old, .new], context: nil)
+    }
+    
+    public override func observeValue(forKeyPath keyPath: String?,
+                               of object: Any?,
+                               change: [NSKeyValueChangeKey: Any]?,
+                               context: UnsafeMutableRawPointer?) {
+        if keyPath == #keyPath(AVPlayerViewController.videoBounds),
+           let new = change?[.newKey] as? CGRect,
+           let old = change?[.oldKey] as? CGRect,
+           new != old {
+            adsOverlayView.frame = new
+        }
     }
     
     required init?(coder: NSCoder) {
@@ -45,6 +57,7 @@ class CustomPlayerViewController: AVPlayerViewController, AVPictureInPictureCont
     
     deinit {
         NotificationCenter.default.removeObserver(self)
+        removeObserver(self, forKeyPath: #keyPath(AVPlayerViewController.videoBounds))
     }
     
     override func viewDidLoad() {
@@ -60,7 +73,6 @@ class CustomPlayerViewController: AVPlayerViewController, AVPictureInPictureCont
     
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
-        adsOverlayView.frame = contentOverlayView?.bounds ?? .zero
     }
     
     override func viewDidDisappear(_ animated: Bool) {
@@ -142,7 +154,7 @@ class CustomPlayerViewController: AVPlayerViewController, AVPictureInPictureCont
         if let startAt = startAt {
             initialSeek = .position(startAt, isAccurate: false)
         }
-        let source = DorisSource(playerItem: AVPlayerItem(url: URL(string: "https://bitdash-a.akamaihd.net/content/sintel/hls/playlist.m3u8")!))
+        let source = DorisSource(type: .item(AVPlayerItem(url: URL(string: "https://bitdash-a.akamaihd.net/content/sintel/hls/playlist.m3u8")!)))
         doris?.load(source: source, initialSeek: initialSeek)
     }
     
@@ -151,38 +163,28 @@ class CustomPlayerViewController: AVPlayerViewController, AVPictureInPictureCont
         if let startAt = startAt {
             initialSeek = .position(startAt, isAccurate: false)
         }
-        let source = DorisSource(playerItem: AVPlayerItem(url: URL(string: "https://cph-p2p-msl.akamaized.net/hls/live/2000341/test/master.m3u8")!))
+        let source = DorisSource(type: .item(AVPlayerItem(url: URL(string: "https://cph-p2p-msl.akamaized.net/hls/live/2000341/test/master.m3u8")!)))
         doris?.load(source: source, initialSeek: initialSeek)
     }
         
     private func loadDAIVodSource() {
         let contentSourceID = "2528370"
         let videoID = "tears-of-steel"
-        let source = DAISource(contentSourceId: contentSourceID,
-                               videoId: videoID,
-                               authToken: nil,
-                               adTagParameters: nil)
-        
+        let source = DorisSource(type: .ssai(.ima(.vod(DorisImaVODData(contentSourceId: contentSourceID, videoId: videoID, authToken: nil, adTagParameters: nil)))))
         doris?.load(source: source)
     }
     
     private func loadDAILiveSource() {
         let assetKey = "sN_IYUG8STe1ZzhIIE_ksA"
-        let source = DAISource(assetKey: assetKey,
-                               authToken: nil,
-                               adTagParameters: nil,
-                               adTagParametersValidFrom: .distantPast,
-                               adTagParametersValidUntil: .distantFuture)
-        
+        let source = DorisSource(type: .ssai(.ima(.live(DorisImaLiveData(assetKey: assetKey, authToken: nil, adTagParameters: nil, adTagParametersValidFrom: nil, adTagParametersValidUntil: nil)))))
         doris?.load(source: source)
     }
     
     private func loadCSAIVodStream() {
-        let adsURL = "https://pubads.g.doubleclick.net/gampad/ads?sz=640x480&iu=/124319096/external/ad_rule_samples&ciu_szs=300x250&ad_rule=1&impl=s&gdfp_req=1&env=vp&output=vmap&unviewed_position_start=1&cust_params=deployment%3Ddevsite%26sample_ar%3Dpreonly&cmsid=496&vid=short_onecue&correlator="
-        
+        let vmap = "https://pubads.g.doubleclick.net/gampad/ads?sz=640x480&iu=/124319096/external/ad_rule_samples&ciu_szs=300x250&ad_rule=1&impl=s&gdfp_req=1&env=vp&output=vmap&unviewed_position_start=1&cust_params=deployment%3Ddevsite%26sample_ar%3Dpreonly&cmsid=496&vid=short_onecue&correlator="
+
         let contentURL = URL(string: "https://storage.googleapis.com/gvabox/media/samples/stock.mp4")!
-        let source = CSAISource(contentURL: contentURL, preroll: adsURL)
-        
+        let source = DorisSource(type: .csai(.ima(.vod(contentURL, adUrl: vmap))))
         doris?.load(source: source)
     }
     
@@ -191,16 +193,14 @@ class CustomPlayerViewController: AVPlayerViewController, AVPictureInPictureCont
         let adsURL = "https://pubads.g.doubleclick.net/gampad/ads?sz=640x480&iu=/124319096/external/ad_rule_samples&ciu_szs=300x250&ad_rule=1&impl=s&gdfp_req=1&env=vp&output=vmap&unviewed_position_start=1&cust_params=deployment%3Ddevsite%26sample_ar%3Dpreonly&cmsid=496&vid=short_onecue&correlator="
         
         let contentURL = URL(string: "https://cph-p2p-msl.akamaized.net/hls/live/2000341/test/master.m3u8")!
-        let source = CSAISource(contentURL: contentURL, preroll: adsURL)
-        
+        let source = DorisSource(type: .csai(.ima(.live(contentURL, prerollUrl: adsURL))))
         doris?.load(source: source)
     }
     
     private func loadDownloadedContent(filePath: URL) {
-        let source = DorisSource(playerItem: AVPlayerItem(url: filePath))
-        source.drm = DorisDRMSource(contentUrl: filePath.absoluteString,
-                                    croToken: nil,
-                                    licensingServerUrl: nil)
+        let source = DorisSource(type: .item(AVPlayerItem(url: filePath)), drm: DorisDRMSource(contentUrl: filePath.absoluteString,
+                                                                                               croToken: nil,
+                                                                                               licensingServerUrl: nil))
         doris?.load(source: source, initialSeek: nil)
     }
 }
