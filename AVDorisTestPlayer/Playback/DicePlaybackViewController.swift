@@ -10,7 +10,7 @@ import UIKit
 import AVDoris
 
 class DicePlaybackViewController: UIViewController {
-    var sourceResolver: DorisSourceResolverProtocol?
+    var sourceResolver: DiceSourceResolver?
     
     let spinner: UIActivityIndicatorView = {
         let spinner = UIActivityIndicatorView(style: .medium)
@@ -83,7 +83,7 @@ class DicePlaybackViewController: UIViewController {
         button.backgroundColor = .green
         let action = UIAction { [weak self] _ in
             guard let self = self else { return }
-
+            
             /// Use `DiceSourceResolver` if you already have auth tokens (in doris consumer app)
             
             let config = DiceAPIConfig(realm: self.realmTextFiled.text ?? "",
@@ -94,8 +94,8 @@ class DicePlaybackViewController: UIViewController {
             sourceResolver = DiceSourceResolver(apiConfig: config)
             
             self.spinner.startAnimating()
-
-            sourceResolver
+            
+            sourceResolver?
                 .set(authType: .credentials(userName:  self.usernameTextFiled.text ?? "", password: self.passwordTextFiled.text ?? ""))
                 .set(videoId: self.videoIDTextFiled.text ?? "", isLive: self.isLiveSwitch.isOn)
                 .resolveSource { result in
