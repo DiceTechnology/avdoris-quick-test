@@ -1,9 +1,9 @@
-platform :ios, '12.0'
+platform :ios, '14.0'
 
 target 'AVDorisTestPlayer' do
   use_frameworks!
 
-  pod 'AVDoris', "= 1.17.15"
+  pod 'AVDoris', "= 1.17.17"
   pod 'google-cast-sdk', "= 4.7.0"
   pod 'DeviceKit', "= 5.2.1"
 end
