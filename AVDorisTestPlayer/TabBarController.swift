@@ -16,16 +16,16 @@ class TabBarController: UITabBarController {
     }
     
     func setup() {
-        let firstViewController = DemoPlaybackViewController()
-        firstViewController.tabBarItem = UITabBarItem(title: "Demo videos", image: UIImage(systemName: "play.rectangle"), tag: 0)
+        let demoViewController = DemoPlaybackViewController()
+        demoViewController.tabBarItem = UITabBarItem(title: "Demo videos", image: UIImage(systemName: "play.rectangle"), tag: 0)
         
-        let secondViewController = DicePlaybackViewController()
-        secondViewController.tabBarItem = UITabBarItem(title: "Dice videos", image: UIImage(systemName: "video"), tag: 1)
+        let diceViewController = DicePlaybackViewController()
+        diceViewController.tabBarItem = UITabBarItem(title: "Dice videos", image: UIImage(systemName: "video"), tag: 1)
         
-        let thirdViewController = DownloadsViewController()
-        thirdViewController.tabBarItem = UITabBarItem(title: "Dice downloads", image: UIImage(systemName: "square.and.arrow.down"), tag: 2)
+        let d2gViewController = DownloadsViewController()
+        d2gViewController.tabBarItem = UITabBarItem(title: "Dice downloads", image: UIImage(systemName: "square.and.arrow.down"), tag: 2)
         
-        let tabBarList = [firstViewController, secondViewController, thirdViewController]
+        let tabBarList = [diceViewController, demoViewController, d2gViewController]
         
         viewControllers = tabBarList
     }

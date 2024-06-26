@@ -10,17 +10,17 @@ import AVDoris
 import AVKit
 
 enum PlaybackItemType {
-    case simleVODSource
-    case simleLiveSource
+    case simpleVODSource
+    case simpleLiveSource
     case daiVodSource
     case daiLiveSource
     case csaiVodStream
     case csaiLiveStream
-    case diceVideo(source: DorisSource)
+    case diceVideo(source: DorisResolvableSource)
     case downloadedSource(filePath: URL)
 }
 
-class CustomPlayerViewController: AVPlayerViewController, AVPictureInPictureControllerDelegate {
+class CustomAVPlayerViewController: AVPlayerViewController, AVPictureInPictureControllerDelegate {
     lazy var adsOverlayView: UIView = {
         let adsOverlayView = UIView()
         adsOverlayView.isHidden = true // hide initially and manage isHidden based on AdvertisementEvent.AD_BREAK_ENDED, AdvertisementEvent.AD_BREAK_STARTED
@@ -71,15 +71,6 @@ class CustomPlayerViewController: AVPlayerViewController, AVPictureInPictureCont
         loadSource(for: playbackItemType)
     }
     
-    override func viewDidLayoutSubviews() {
-        super.viewDidLayoutSubviews()
-    }
-    
-    override func viewDidDisappear(_ animated: Bool) {
-        super.viewDidDisappear(animated)
-        doris?.stopMuxMonitoring()
-    }
-    
     func setup() {
         NotificationCenter.default.addObserver(self, selector: #selector(didEnterBackground), name: UIApplication.didEnterBackgroundNotification, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(willEnterForeground), name: UIApplication.didBecomeActiveNotification, object: nil)
@@ -98,10 +89,6 @@ class CustomPlayerViewController: AVPlayerViewController, AVPictureInPictureCont
         //Configure logger if needed
         DorisLogger.logFilter = [.info, .warning, .error, .critical, .state] //[.debug, .events]
         
-        //MARK: Optional
-        //if you use MUX, make sure you call doris?.cleanUpMux() when you are done with playback, to destroy AVplayerViewController instance it is monitoring
-        doris?.startMuxMonitoring(playerData: DorisMuxCustomerPlayerData(playerName: "MyPlayer", environmentKey: "key"), videoData: DorisMuxCustomerVideoData())
-        
         //set DorisPlayerMediaMetadata (NowPlayingInfo - lock screen controls)
         let metadata = DorisPlayerMediaMetadata(title: "Title", artist: "Artist", albumTitle: "album", image: nil, remoteImageUrl: URL(string: "https://via.placeholder.com/300x200"))
         doris?.updateMetadata(metadata)
@@ -112,9 +99,9 @@ class CustomPlayerViewController: AVPlayerViewController, AVPictureInPictureCont
     
     func loadSource(for playbackItemType: PlaybackItemType) {
         switch playbackItemType {
-        case .simleVODSource:
+        case .simpleVODSource:
             loadSimpleVODSource()
-        case .simleLiveSource:
+        case .simpleLiveSource:
             loadSimpleLiveSource()
         case .daiVodSource:
             loadDAIVodSource()
@@ -127,7 +114,7 @@ class CustomPlayerViewController: AVPlayerViewController, AVPictureInPictureCont
         case .downloadedSource(let filePath):
             loadDownloadedContent(filePath: filePath)
         case .diceVideo(let source):
-            doris?.load(source: source)
+            doris?.load(resolvable: source, initialSeek: nil, delay: nil, autoStart: true)
         }
     }
     
@@ -155,7 +142,7 @@ class CustomPlayerViewController: AVPlayerViewController, AVPictureInPictureCont
             initialSeek = .position(startAt, isAccurate: false)
         }
         let source = DorisSource(type: .item(AVPlayerItem(url: URL(string: "https://bitdash-a.akamaihd.net/content/sintel/hls/playlist.m3u8")!)))
-        doris?.load(source: source, initialSeek: initialSeek)
+        doris?.load(source: source, initialSeek: initialSeek, delay: nil, autoStart: true)
     }
     
     private func loadSimpleLiveSource(startAt: Double? = nil) {
@@ -164,20 +151,20 @@ class CustomPlayerViewController: AVPlayerViewController, AVPictureInPictureCont
             initialSeek = .position(startAt, isAccurate: false)
         }
         let source = DorisSource(type: .item(AVPlayerItem(url: URL(string: "https://cph-p2p-msl.akamaized.net/hls/live/2000341/test/master.m3u8")!)))
-        doris?.load(source: source, initialSeek: initialSeek)
+        doris?.load(source: source, initialSeek: initialSeek, delay: nil, autoStart: true)
     }
         
     private func loadDAIVodSource() {
         let contentSourceID = "2528370"
         let videoID = "tears-of-steel"
         let source = DorisSource(type: .ssai(.ima(.vod(DorisImaVODData(contentSourceId: contentSourceID, videoId: videoID, authToken: nil, adTagParameters: nil)))))
-        doris?.load(source: source)
+        doris?.load(source: source, initialSeek: nil, delay: nil, autoStart: true)
     }
     
     private func loadDAILiveSource() {
         let assetKey = "sN_IYUG8STe1ZzhIIE_ksA"
         let source = DorisSource(type: .ssai(.ima(.live(DorisImaLiveData(assetKey: assetKey, authToken: nil, adTagParameters: nil, adTagParametersValidFrom: nil, adTagParametersValidUntil: nil)))))
-        doris?.load(source: source)
+        doris?.load(source: source, initialSeek: nil, delay: nil, autoStart: true)
     }
     
     private func loadCSAIVodStream() {
@@ -185,7 +172,7 @@ class CustomPlayerViewController: AVPlayerViewController, AVPictureInPictureCont
 
         let contentURL = URL(string: "https://storage.googleapis.com/gvabox/media/samples/stock.mp4")!
         let source = DorisSource(type: .csai(.ima(.vod(contentURL, adUrl: vmap))))
-        doris?.load(source: source)
+        doris?.load(source: source, initialSeek: nil, delay: nil, autoStart: true)
     }
     
     private func loadCSAILiveStream() {
@@ -194,19 +181,21 @@ class CustomPlayerViewController: AVPlayerViewController, AVPictureInPictureCont
         
         let contentURL = URL(string: "https://cph-p2p-msl.akamaized.net/hls/live/2000341/test/master.m3u8")!
         let source = DorisSource(type: .csai(.ima(.live(contentURL, prerollUrl: adsURL))))
-        doris?.load(source: source)
+        doris?.load(source: source, initialSeek: nil, delay: nil, autoStart: true)
     }
     
     private func loadDownloadedContent(filePath: URL) {
-        let source = DorisSource(type: .item(AVPlayerItem(url: filePath)), drm: DorisDRMSource(contentUrl: filePath.absoluteString,
-                                                                                               croToken: nil,
-                                                                                               licensingServerUrl: nil))
-        doris?.load(source: source, initialSeek: nil)
+        let metadata = DorisSourceMetadata(videoId: "1", isLive: false, url: filePath.absoluteURL)
+        metadata.drm = DorisDRMSource(contentUrl: filePath.absoluteString,
+                                      croToken: nil,
+                                      licensingServerUrl: nil)
+        let source = DorisSource(type: .item(AVPlayerItem(url: filePath)), metadata: metadata)
+        doris?.load(source: source, initialSeek: nil, delay: nil, autoStart: true)
     }
 }
 
 
-extension CustomPlayerViewController: DorisPlayerOutputProtocol {
+extension CustomAVPlayerViewController: DorisPlayerOutputProtocol, SystemOutputProtocol {
     func onPlayerStateChanged(old: DorisPlayerState, new: DorisPlayerState) {
         //
     }
@@ -251,12 +240,16 @@ extension CustomPlayerViewController: DorisPlayerOutputProtocol {
         case .pause:
             doris?.pause()
         case .skipBackward(let offset):
-            doris?.seek(.offset(-offset, isAccurate: false))
+            doris?.seek(.offset(-offset, isAccurate: false), callback: nil)
         case .skipForward(let offset):
-            doris?.seek(.offset(offset, isAccurate: false))
+            doris?.seek(.offset(offset, isAccurate: false), callback: nil)
         case .changePosition(let position):
-            doris?.seek(.position(position, isAccurate: false))
+            doris?.seek(.position(position, isAccurate: false), callback: nil)
         default: break
         }
+    }
+    
+    func onSystemEvent(_ event: DorisSystemEvent) {
+        //
     }
 }

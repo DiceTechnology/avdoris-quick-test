@@ -18,7 +18,7 @@ class DemoPlaybackViewController: UIViewController {
         button.setTitle("Play VOD", for: .normal)
         let action = UIAction { [weak self] _ in
             guard let self = self else { return }
-            self.present(CustomPlayerViewController(.simleVODSource), animated: true)
+            self.present(CustomAVPlayerViewController(.simpleVODSource), animated: true)
         }
         button.addAction(action, for: .touchUpInside)
         return button
@@ -30,7 +30,7 @@ class DemoPlaybackViewController: UIViewController {
         button.setTitle("Play LIVE", for: .normal)
         let action = UIAction { [weak self] _ in
             guard let self = self else { return }
-            self.present(CustomPlayerViewController(.simleLiveSource), animated: true)
+            self.present(CustomAVPlayerViewController(.simpleLiveSource), animated: true)
         }
         button.addAction(action, for: .touchUpInside)
         return button
@@ -42,7 +42,7 @@ class DemoPlaybackViewController: UIViewController {
         button.setTitle("Play VOD with server-side ads", for: .normal)
         let action = UIAction { [weak self] _ in
             guard let self = self else { return }
-            self.present(CustomPlayerViewController(.daiVodSource), animated: true)        }
+            self.present(CustomAVPlayerViewController(.daiVodSource), animated: true)        }
         button.addAction(action, for: .touchUpInside)
         return button
     }()
@@ -53,7 +53,7 @@ class DemoPlaybackViewController: UIViewController {
         button.setTitle("Play LIVE with server-side ads", for: .normal)
         let action = UIAction { [weak self] _ in
             guard let self = self else { return }
-            self.present(CustomPlayerViewController(.daiLiveSource), animated: true)
+            self.present(CustomAVPlayerViewController(.daiLiveSource), animated: true)
         }
         button.addAction(action, for: .touchUpInside)
         return button
@@ -65,7 +65,7 @@ class DemoPlaybackViewController: UIViewController {
         button.setTitle("Play VOD with client-side ads", for: .normal)
         let action = UIAction { [weak self] _ in
             guard let self = self else { return }
-            self.present(CustomPlayerViewController(.csaiVodStream), animated: true)
+            self.present(CustomAVPlayerViewController(.csaiVodStream), animated: true)
         }
         button.addAction(action, for: .touchUpInside)
         return button
@@ -77,7 +77,7 @@ class DemoPlaybackViewController: UIViewController {
         button.setTitle("Play LIVE with client-side ads", for: .normal)
         let action = UIAction { [weak self] _ in
             guard let self = self else { return }
-            self.present(CustomPlayerViewController(.csaiLiveStream), animated: true)
+            self.present(CustomAVPlayerViewController(.csaiLiveStream), animated: true)
         }
         button.addAction(action, for: .touchUpInside)
         return button

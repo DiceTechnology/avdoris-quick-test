@@ -233,7 +233,7 @@ class DownloadsPresenterImpl: DownloadProviderDelegate {
                 switch result {
                 case .success(let data):
                     guard let localUrl = data.localFileUrl else { return }
-                    self?.view?.present(CustomPlayerViewController(.downloadedSource(filePath: localUrl)), animated: true)
+                    self?.view?.present(CustomAVPlayerViewController(.downloadedSource(filePath: localUrl)), animated: true)
                 case .failure(let error):
                     self?.view?.showError(error.localizedDescription)
                 }
