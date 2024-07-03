@@ -8,7 +8,7 @@
 
 import VesperSDK
 import AVDoris
-
+import GoogleCast
 
 class VesperPlayerViewController: UIViewController {
     var orientation = UIInterfaceOrientationMask.portrait
@@ -74,12 +74,22 @@ class VesperPlayerViewController: UIViewController {
         super.viewDidLoad()
         
         spinner.startAnimating()
-        vesperSDK.createPlayerUIManager(viewOutput: self) { [weak self] playerManager in
-            guard let self, let playerManager, let uiManager = playerManager.uiManager else { return }
-            self.playerManager = playerManager
-            self.playerManager?.uiManager?.viewModel.toggles.isFullscreen = orientation != .portrait
-            self.setupLayout(uiManager: uiManager)
-            self.sampleLoad(playerManager: playerManager)
+        vesperSDK.createPlayerUIManager(viewOutput: self) { [weak self] result in
+            guard let self else { return }
+            switch result {
+            case .success(let playerManager):
+                self.playerManager = playerManager
+                self.playerManager?.uiManager?.viewModel.toggles.isFullscreen = orientation != .portrait
+                if let uiManager = playerManager.uiManager {
+                    self.setupLayout(uiManager: uiManager)
+                }                
+                self.sampleLoad(playerManager: playerManager)
+            case .failure(let error):
+                if let error = error as? HTTPError {
+                    print("zzz Create PlayerManager error: ", error)
+                }
+            }
+            
             self.spinner.stopAnimating()
         }
     }
@@ -118,12 +128,26 @@ class VesperPlayerViewController: UIViewController {
     }
     
     func sampleLoad(playerManager: PlayerManager) {
-        playerManager.load(source: source)
+        playerManager.load(source: source) { error in
+            if let error = error as? HTTPError {
+                //handle load error
+            }
+        }
     }
 }
 
 
-extension VesperPlayerViewController: DorisViewOutputProtocol {
+extension VesperPlayerViewController: DorisViewOutputProtocol, DorisPlayerOutputProtocol {
+    func onPlayerEvent(_ event: DorisPlayerEvent) {
+        switch event {
+        case .playerItemFailed(let logs, let playerError):
+            if let error = DorisBeaconsFatalError {
+                //handle beacons error
+            } else {
+                //handle other player error
+            }
+        }
+    }
     func onViewUniversalEvent(_ event: AVDoris.DorisViewUniversalEvent) {}
     func viewDidChangeState(old: AVDoris.DorisViewState, new: AVDoris.DorisViewState) {}
     func onViewTapEvent(_ event: DorisViewTapEvent) {

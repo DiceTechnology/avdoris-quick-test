@@ -114,7 +114,7 @@ class CustomAVPlayerViewController: AVPlayerViewController, AVPictureInPictureCo
         case .downloadedSource(let filePath):
             loadDownloadedContent(filePath: filePath)
         case .diceVideo(let source):
-            doris?.load(resolvable: source, initialSeek: nil, delay: nil, autoStart: true)
+            doris?.load(resolvable: source, initialSeek: nil, delay: nil, autoStart: true, completion: {_ in})
         }
     }
     
