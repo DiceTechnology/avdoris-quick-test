@@ -43,7 +43,7 @@ class VesperPlayerViewController: UIViewController {
     var landscapeConstraints: [NSLayoutConstraint] = []
     var portraitConstraints: [NSLayoutConstraint] = []
     
-    var vesperSDK: VesperSDK
+    var vesperSDKManager: VesperSDKManager
     var playerManager: PlayerManager?
     let source: DorisResolvableSource
     
@@ -52,7 +52,7 @@ class VesperPlayerViewController: UIViewController {
          password: String,
          source: DorisResolvableSource) {        
         let authManager = DebugDiceAuthManager(username: username, password: password, apiConfig: apiConfig)
-        self.vesperSDK = VesperSDK(config: apiConfig, authManager: authManager)
+        self.vesperSDKManager = VesperSDKManager(config: apiConfig, authManager: authManager)
         self.source = source
         
         super.init(nibName: nil, bundle: nil)
@@ -74,7 +74,7 @@ class VesperPlayerViewController: UIViewController {
         super.viewDidLoad()
         
         spinner.startAnimating()
-        vesperSDK.createPlayerUIManager(viewOutput: self) { [weak self] result in
+        vesperSDKManager.createPlayerUIManager(viewOutput: self) { [weak self] result in
             guard let self else { return }
             switch result {
             case .success(let playerManager):
@@ -85,7 +85,7 @@ class VesperPlayerViewController: UIViewController {
                 }                
                 self.sampleLoad(playerManager: playerManager)
             case .failure(let error):
-                if let error = error as? HTTPError {
+                if let error = error as? VesperSDKError {
                     print("zzz Create PlayerManager error: ", error)
                 }
             }
@@ -129,7 +129,7 @@ class VesperPlayerViewController: UIViewController {
     
     func sampleLoad(playerManager: PlayerManager) {
         playerManager.load(source: source) { error in
-            if let error = error as? HTTPError {
+            if let error = error as? VesperSDKError {
                 //handle load error
             }
         }
@@ -141,11 +141,13 @@ extension VesperPlayerViewController: DorisViewOutputProtocol, DorisPlayerOutput
     func onPlayerEvent(_ event: DorisPlayerEvent) {
         switch event {
         case .playerItemFailed(let logs, let playerError):
-            if let error = DorisBeaconsFatalError {
+            switch playerError {
+            case .beacons(let error):
                 //handle beacons error
-            } else {
-                //handle other player error
+                break
+            default: break
             }
+        default: break
         }
     }
     func onViewUniversalEvent(_ event: AVDoris.DorisViewUniversalEvent) {}
