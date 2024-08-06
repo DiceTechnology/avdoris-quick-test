@@ -55,6 +55,7 @@ class VesperPlayerViewController: UIViewController {
         self.vesperSDKManager = VesperSDKManager(config: apiConfig, authManager: authManager)
         self.source = source
         
+        DorisLogger.logFilter = DorisLogType.allCases
         super.init(nibName: nil, bundle: nil)
         self.view.backgroundColor = .black
         
@@ -74,15 +75,18 @@ class VesperPlayerViewController: UIViewController {
         super.viewDidLoad()
         
         spinner.startAnimating()
-        vesperSDKManager.createPlayerUIManager(viewOutput: self) { [weak self] result in
+        vesperSDKManager.createPlayerManager(uiType: .default(output: nil)) { [weak self] result in
             guard let self else { return }
             switch result {
             case .success(let playerManager):
                 self.playerManager = playerManager
+                
                 self.playerManager?.uiManager?.viewModel.toggles.isFullscreen = orientation != .portrait
+                
                 if let uiManager = playerManager.uiManager {
                     self.setupLayout(uiManager: uiManager)
-                }                
+                }
+                
                 self.sampleLoad(playerManager: playerManager)
             case .failure(let error):
                 if let error = error as? VesperSDKError {

@@ -81,7 +81,7 @@ class CustomAVPlayerViewController: AVPlayerViewController, AVPictureInPictureCo
         //this config is used to configure UI container for ADS, in case of custom UI provide you own view for ads
         let adsConfig = DorisAdsConfig(adContainerVC: self, adContainerView: adsOverlayView)
         
-        let config = AVDorisConfig(uiType: .native(playerViewController: self),
+        let config = AVDorisConfig(uiType: .avPlayerViewController(self),
                                    playerConfig: .default,
                                    adsConfig: adsConfig)
         
