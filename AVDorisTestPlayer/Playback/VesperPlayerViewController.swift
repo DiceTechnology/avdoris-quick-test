@@ -45,14 +45,15 @@ class VesperPlayerViewController: UIViewController {
     
     var vesperSDKManager: VesperSDKManager
     var playerManager: PlayerManager?
-    let source: DorisResolvableSource
+    let source: ResolvableSource
     
-    init(apiConfig: DiceAPIConfig,
+    init(apiConfig: APIConfig,
          username: String,
          password: String,
-         source: DorisResolvableSource) {        
+         source: ResolvableSource) {    
         let authManager = DebugDiceAuthManager(username: username, password: password, apiConfig: apiConfig)
-        self.vesperSDKManager = VesperSDKManager(config: apiConfig, authManager: authManager)
+        let vesperSDKManager = VesperSDKManager(config: apiConfig, authManager: authManager)
+        self.vesperSDKManager = vesperSDKManager
         self.source = source
         
         DorisLogger.logFilter = DorisLogType.allCases

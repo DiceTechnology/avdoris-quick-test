@@ -10,11 +10,19 @@ import UIKit
 import VesperSDK
 import AVDoris
 
-class DicePlaybackViewController: UIViewController {    
+
+class DicePlaybackViewController: UIViewController {
     let spinner: UIActivityIndicatorView = {
         let spinner = UIActivityIndicatorView(style: .medium)
         spinner.hidesWhenStopped = true
         return spinner
+    }()
+    
+    lazy var pickerView: UIPickerView = {
+        let pv = UIPickerView()
+        pv.delegate = self
+        pv.dataSource = self
+        return pv
     }()
 
     let usernameTextFiled: UITextField = {
@@ -57,13 +65,18 @@ class DicePlaybackViewController: UIViewController {
     
     let isLiveLabel: UILabel = {
         let label = UILabel()
-        label.text = "VOD(off) / LIVE(on)"
+        label.text = "isLive"
         return label
     }()
     
     let isLiveSwitch: UISwitch = {
         let isLiveSwitch = UISwitch()
         return isLiveSwitch
+    }()
+    
+    let watchContextPicker: WatchContextPicker = {
+        let picker = WatchContextPicker()
+        return picker
     }()
     
     lazy var buttonPlay: UIButton = {
@@ -73,12 +86,14 @@ class DicePlaybackViewController: UIViewController {
         button.backgroundColor = .systemBlue
         let action = UIAction { [weak self] _ in
             guard let self = self else { return }
-            let vc = VesperPlayerViewController(apiConfig: DiceAPIConfig(realm: realmTextFiled.text ?? "",
-                                                                         apiKey: "9ae946e6-3374-485f-9737-662cae419fef"),
+            let vc = VesperPlayerViewController(apiConfig: APIConfig(realm: realmTextFiled.text ?? "",
+                                                                     environment: APIConfig.Environment.allCases[pickerView.selectedRow(inComponent: 0)],
+                                                                     apiKey: "9ae946e6-3374-485f-9737-662cae419fef"),
                                                 username: usernameTextFiled.text ?? "",
                                                 password: passwordTextFiled.text ?? "",
-                                                source: DorisResolvableSource(id: videoIDTextFiled.text ?? "",
-                                                                              isLive: isLiveSwitch.isOn))
+                                                source: ResolvableSource(id: videoIDTextFiled.text ?? "",
+                                                                         isLive: isLiveSwitch.isOn,
+                                                                         watchContext: watchContextPicker.watchContext))
             
             vc.modalPresentationStyle = .overFullScreen
             self.present(vc, animated: true)
@@ -105,7 +120,9 @@ class DicePlaybackViewController: UIViewController {
         stackView.addArrangedSubview(realmTextFiled)
         stackView.addArrangedSubview(videoIDTextFiled)
         stackView.addArrangedSubview(isLiveStackView)
+        stackView.addArrangedSubview(watchContextPicker)
         stackView.addArrangedSubview(buttonPlay)
+        stackView.addArrangedSubview(pickerView)
         return stackView
     }()
     
@@ -126,5 +143,20 @@ class DicePlaybackViewController: UIViewController {
             .anchorRight(view.rightAnchor, 20)
         
         spinner.anchorCenterSuperview()
+    }
+}
+
+
+extension DicePlaybackViewController: UIPickerViewDelegate, UIPickerViewDataSource {
+    func numberOfComponents(in pickerView: UIPickerView) -> Int {
+        1
+    }
+
+    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+        return APIConfig.Environment.allCases.count
+    }
+
+    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+        return APIConfig.Environment.allCases[row].rawValue
     }
 }

@@ -37,6 +37,7 @@
 		DF7DCA5C2C25D47A001EBA8B /* VesperPlayerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF7DCA5B2C25D47A001EBA8B /* VesperPlayerViewController.swift */; };
 		DFB8439328CB8E87003BDC74 /* CustomAVPlayerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFB8439228CB8E87003BDC74 /* CustomAVPlayerViewController.swift */; };
 		DFEC0FB1298191830016E73D /* Dictionary+prettyPrinted.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFEC0FB0298191830016E73D /* Dictionary+prettyPrinted.swift */; };
+		DFF1164B2C66536F006BCDB9 /* WatchContextPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFF1164A2C66536F006BCDB9 /* WatchContextPicker.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -75,6 +76,7 @@
 		DF7DCA5B2C25D47A001EBA8B /* VesperPlayerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VesperPlayerViewController.swift; sourceTree = "<group>"; };
 		DFB8439228CB8E87003BDC74 /* CustomAVPlayerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomAVPlayerViewController.swift; sourceTree = "<group>"; };
 		DFEC0FB0298191830016E73D /* Dictionary+prettyPrinted.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Dictionary+prettyPrinted.swift"; sourceTree = "<group>"; };
+		DFF1164A2C66536F006BCDB9 /* WatchContextPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchContextPicker.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -186,6 +188,7 @@
 			isa = PBXGroup;
 			children = (
 				DF39C6ED29BA0F2200A4CF76 /* LoadingOverlay.swift */,
+				DFF1164A2C66536F006BCDB9 /* WatchContextPicker.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -355,6 +358,7 @@
 				DF39C6F529BA0F2200A4CF76 /* UIControl+closure.swift in Sources */,
 				DF51767129CC8B6300DE2BD6 /* DicePlaybackViewController.swift in Sources */,
 				DFEC0FB1298191830016E73D /* Dictionary+prettyPrinted.swift in Sources */,
+				DFF1164B2C66536F006BCDB9 /* WatchContextPicker.swift in Sources */,
 				DF39C70129BA0F2200A4CF76 /* TabBarController.swift in Sources */,
 				DF39C6F329BA0F2200A4CF76 /* UIView+ReuseIdentifier.swift in Sources */,
 				DF39C70029BA0F2200A4CF76 /* DownloadsViewController.swift in Sources */,

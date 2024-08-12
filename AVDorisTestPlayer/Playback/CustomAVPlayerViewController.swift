@@ -16,7 +16,7 @@ enum PlaybackItemType {
     case daiLiveSource
     case csaiVodStream
     case csaiLiveStream
-    case diceVideo(source: DorisResolvableSource)
+    case diceVideo(source: ResolvableSource)
     case downloadedSource(filePath: URL)
 }
 
@@ -79,7 +79,7 @@ class CustomAVPlayerViewController: AVPlayerViewController, AVPictureInPictureCo
         
         self.player = contentPlayer
         //this config is used to configure UI container for ADS, in case of custom UI provide you own view for ads
-        let adsConfig = DorisAdsConfig(adContainerVC: self, adContainerView: adsOverlayView)
+        let adsConfig = AdsConfig(adContainerVC: self, adContainerView: adsOverlayView)
         
         let config = AVDorisConfig(uiType: .avPlayerViewController(self),
                                    playerConfig: .default,
@@ -137,7 +137,7 @@ class CustomAVPlayerViewController: AVPlayerViewController, AVPictureInPictureCo
     }
     
     private func loadSimpleVODSource(startAt: Double? = nil) {
-        var initialSeek: DorisSeekType?
+        var initialSeek: SeekType?
         if let startAt = startAt {
             initialSeek = .position(startAt, isAccurate: false)
         }
@@ -146,7 +146,7 @@ class CustomAVPlayerViewController: AVPlayerViewController, AVPictureInPictureCo
     }
     
     private func loadSimpleLiveSource(startAt: Double? = nil) {
-        var initialSeek: DorisSeekType?
+        var initialSeek: SeekType?
         if let startAt = startAt {
             initialSeek = .position(startAt, isAccurate: false)
         }
