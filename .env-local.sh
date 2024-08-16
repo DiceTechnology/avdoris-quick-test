@@ -1,0 +1,2 @@
+export VESPER_USERNAME=
+export VESPER_PASSWORD=
