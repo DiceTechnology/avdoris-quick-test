@@ -52,11 +52,11 @@ class VesperPlayerViewController: UIViewController {
          password: String,
          source: ResolvableSource) {    
         let authManager = DebugDiceAuthManager(username: username, password: password, apiConfig: apiConfig)
-        let vesperSDKManager = VesperSDKManager(config: apiConfig, authManager: authManager)
+        let config = VesperSDKConfig(apiConfig: apiConfig, authManager: authManager)
+        let vesperSDKManager = VesperSDKManager(config: config)
         self.vesperSDKManager = vesperSDKManager
         self.source = source
         
-        DorisLogger.logFilter = DorisLogType.allCases
         super.init(nibName: nil, bundle: nil)
         self.view.backgroundColor = .black
         
@@ -76,7 +76,7 @@ class VesperPlayerViewController: UIViewController {
         super.viewDidLoad()
         
         spinner.startAnimating()
-        vesperSDKManager.createPlayerManager(uiType: .default(output: nil)) { [weak self] result in
+        vesperSDKManager.createPlayerManager(playerOutput: self, userInterfaceConfig: .default(output: nil)) { [weak self] result in
             guard let self else { return }
             switch result {
             case .success(let playerManager):
